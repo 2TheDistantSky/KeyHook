@@ -69,6 +69,7 @@ $Space::
     SpacePressed:=""
     if Triggered
     {
+        try
         runFunc(keyset.press_space)
     }
     Triggered:=""
