@@ -4,272 +4,272 @@ global keyset:=CLSets.Keys
 if(!keyset.press_space)
     keyset.press_space:="keyFunc_space"
 
-if(!keyset.space_a)
-    keyset.space_a:="keyFunc_moveWordLeft"
-if(!keyset.space_b)
-    keyset.space_b:="keyFunc_moveDown(10)"
-if(!keyset.space_c)
-    keyset.space_c:="keyFunc_copy_1"
-if(!keyset.space_d)
-    keyset.space_d:="keyFunc_moveDown"
-if(!keyset.space_e)
-    keyset.space_e:="keyFunc_moveUp"
-if(!keyset.space_f)
-    keyset.space_f:="keyFunc_moveRight"
-if(!keyset.space_g)
-    keyset.space_g:="keyFunc_moveWordRight"
-if(!keyset.space_h)
-    keyset.space_h:="keyFunc_selectWordLeft"
-if(!keyset.space_i)
-    keyset.space_i:="keyFunc_selectUp"
-if(!keyset.space_j)
-    keyset.space_j:="keyFunc_selectLeft"
-if(!keyset.space_k)
-    keyset.space_k:="keyFunc_selectDown"
-if(!keyset.space_l)
-    keyset.space_l:="keyFunc_selectRight"
-if(!keyset.space_m)
-    keyset.space_m:="keyFunc_doNothing"
-if(!keyset.space_n)
-    keyset.space_n:="keyFunc_selectDown(10)"
-if(!keyset.space_o)
-    keyset.space_o:="keyFunc_selectEnd"
-if(!keyset.space_p)
-    keyset.space_p:="keyFunc_home"
-if(!keyset.space_q)
-    keyset.space_q:="keyFunc_qbar"
-if(!keyset.space_r)
-    keyset.space_r:="keyFunc_delete"
-if(!keyset.space_s)
-    keyset.space_s:="keyFunc_moveLeft"
-if(!keyset.space_t)
-    keyset.space_t:="keyFunc_moveUp(10)"
-if(!keyset.space_u)
-    keyset.space_u:="keyFunc_selectHome"
-if(!keyset.space_v)
-    keyset.space_v:="keyFunc_paste_1"
-if(!keyset.space_w)
-    keyset.space_w:="keyFunc_backspace"
-if(!keyset.space_x)
-    keyset.space_x:="keyFunc_cut_1"
-if(!keyset.space_y)
-    keyset.space_y:="keyFunc_selectUp(10)"
-if(!keyset.space_z)
-    keyset.space_z:="keyFunc_undo"
+if(!keyset.leader_a)
+    keyset.leader_a:="keyFunc_moveWordLeft"
+if(!keyset.leader_b)
+    keyset.leader_b:="keyFunc_moveDown(10)"
+if(!keyset.leader_c)
+    keyset.leader_c:="keyFunc_copy_1"
+if(!keyset.leader_d)
+    keyset.leader_d:="keyFunc_moveDown"
+if(!keyset.leader_e)
+    keyset.leader_e:="keyFunc_moveUp"
+if(!keyset.leader_f)
+    keyset.leader_f:="keyFunc_moveRight"
+if(!keyset.leader_g)
+    keyset.leader_g:="keyFunc_moveWordRight"
+if(!keyset.leader_h)
+    keyset.leader_h:="keyFunc_selectWordLeft"
+if(!keyset.leader_i)
+    keyset.leader_i:="keyFunc_selectUp"
+if(!keyset.leader_j)
+    keyset.leader_j:="keyFunc_selectLeft"
+if(!keyset.leader_k)
+    keyset.leader_k:="keyFunc_selectDown"
+if(!keyset.leader_l)
+    keyset.leader_l:="keyFunc_selectRight"
+if(!keyset.leader_m)
+    keyset.leader_m:="keyFunc_doNothing"
+if(!keyset.leader_n)
+    keyset.leader_n:="keyFunc_selectDown(10)"
+if(!keyset.leader_o)
+    keyset.leader_o:="keyFunc_selectEnd"
+if(!keyset.leader_p)
+    keyset.leader_p:="keyFunc_home"
+if(!keyset.leader_q)
+    keyset.leader_q:="keyFunc_qbar"
+if(!keyset.leader_r)
+    keyset.leader_r:="keyFunc_delete"
+if(!keyset.leader_s)
+    keyset.leader_s:="keyFunc_moveLeft"
+if(!keyset.leader_t)
+    keyset.leader_t:="keyFunc_moveUp(10)"
+if(!keyset.leader_u)
+    keyset.leader_u:="keyFunc_selectHome"
+if(!keyset.leader_v)
+    keyset.leader_v:="keyFunc_paste_1"
+if(!keyset.leader_w)
+    keyset.leader_w:="keyFunc_backspace"
+if(!keyset.leader_x)
+    keyset.leader_x:="keyFunc_cut_1"
+if(!keyset.leader_y)
+    keyset.leader_y:="keyFunc_selectUp(10)"
+if(!keyset.leader_z)
+    keyset.leader_z:="keyFunc_undo"
 
-if(!keyset.space_backquote)
-    keyset.space_backquote:="keyFunc_doNothing"
-if(!keyset.space_1)
-    keyset.space_1:="keyFunc_winbind_activate(1)"
-if(!keyset.space_2)
-    keyset.space_2:="keyFunc_winbind_activate(2)"
-if(!keyset.space_3)
-    keyset.space_3:="keyFunc_winbind_activate(3)"
-if(!keyset.space_4)
-    keyset.space_4:="keyFunc_winbind_activate(4)"
-if(!keyset.space_5)
-    keyset.space_5:="keyFunc_winbind_activate(5)"
-if(!keyset.space_6)
-    keyset.space_6:="keyFunc_winbind_activate(6)"
-if(!keyset.space_7)
-    keyset.space_7:="keyFunc_winbind_activate(7)"
-if(!keyset.space_8)
-    keyset.space_8:="keyFunc_winbind_activate(8)"
-if(!keyset.space_9)
-    keyset.space_9:="keyFunc_winbind_activate(9)"
-if(!keyset.space_0)
-    keyset.space_0:="keyFunc_winbind_activate(10)"
-if(!keyset.space_minus)
-    keyset.space_minus:="keyFunc_qbar_upperFolderPath"
-if(!keyset.space_equal)
-    keyset.space_equal:="keyFunc_qbar_lowerFolderPath"
-if(!keyset.space_backspace)
-    keyset.space_backspace:="keyFunc_deleteLine"
-; if(!keyset.space_tab)
-;     keyset.space_tab:="keyFunc_tabScript"
-if(!keyset.space_leftSquareBracket)
-    keyset.space_leftSquareBracket:="keyFunc_deleteToLineBeginning"
-if(!keyset.space_rightSquareBracket)
-    keyset.space_rightSquareBracket:="keyFunc_doNothing"
-if(!keyset.space_backslash)
-    keyset.space_backslash:="keyFunc_doNothing"
-if(!keyset.space_semicolon)
-    keyset.space_semicolon:="keyFunc_end"
-if(!keyset.space_quote)
-    keyset.space_quote:="keyFunc_doNothing"
-if(!keyset.space_enter)
-    keyset.space_enter:="keyFunc_enterWherever"
-if(!keyset.space_comma)
-    keyset.space_comma:="keyFunc_selectCurrentWord"
-if(!keyset.space_dot)
-    keyset.space_dot:="keyFunc_selectWordRight"
-if(!keyset.space_slash)
-    keyset.space_slash:="keyFunc_deleteToLineEnd"
-; if(!keyset.space_space)
-;     keyset.space_space:="keyFunc_enter"
-if(!keyset.space_ralt)
-    keyset.space_ralt:="keyFunc_doNothing"
+if(!keyset.leader_backquote)
+    keyset.leader_backquote:="keyFunc_doNothing"
+if(!keyset.leader_1)
+    keyset.leader_1:="keyFunc_winbind_activate(1)"
+if(!keyset.leader_2)
+    keyset.leader_2:="keyFunc_winbind_activate(2)"
+if(!keyset.leader_3)
+    keyset.leader_3:="keyFunc_winbind_activate(3)"
+if(!keyset.leader_4)
+    keyset.leader_4:="keyFunc_winbind_activate(4)"
+if(!keyset.leader_5)
+    keyset.leader_5:="keyFunc_winbind_activate(5)"
+if(!keyset.leader_6)
+    keyset.leader_6:="keyFunc_winbind_activate(6)"
+if(!keyset.leader_7)
+    keyset.leader_7:="keyFunc_winbind_activate(7)"
+if(!keyset.leader_8)
+    keyset.leader_8:="keyFunc_winbind_activate(8)"
+if(!keyset.leader_9)
+    keyset.leader_9:="keyFunc_winbind_activate(9)"
+if(!keyset.leader_0)
+    keyset.leader_0:="keyFunc_winbind_activate(10)"
+if(!keyset.leader_minus)
+    keyset.leader_minus:="keyFunc_qbar_upperFolderPath"
+if(!keyset.leader_equal)
+    keyset.leader_equal:="keyFunc_qbar_lowerFolderPath"
+if(!keyset.leader_backspace)
+    keyset.leader_backspace:="keyFunc_deleteLine"
+; if(!keyset.leader_tab)
+;     keyset.leader_tab:="keyFunc_tabScript"
+if(!keyset.leader_leftSquareBracket)
+    keyset.leader_leftSquareBracket:="keyFunc_deleteToLineBeginning"
+if(!keyset.leader_rightSquareBracket)
+    keyset.leader_rightSquareBracket:="keyFunc_doNothing"
+if(!keyset.leader_backslash)
+    keyset.leader_backslash:="keyFunc_doNothing"
+if(!keyset.leader_semicolon)
+    keyset.leader_semicolon:="keyFunc_end"
+if(!keyset.leader_quote)
+    keyset.leader_quote:="keyFunc_doNothing"
+if(!keyset.leader_enter)
+    keyset.leader_enter:="keyFunc_enterWherever"
+if(!keyset.leader_comma)
+    keyset.leader_comma:="keyFunc_selectCurrentWord"
+if(!keyset.leader_dot)
+    keyset.leader_dot:="keyFunc_selectWordRight"
+if(!keyset.leader_slash)
+    keyset.leader_slash:="keyFunc_deleteToLineEnd"
+; if(!keyset.leader_space)
+;     keyset.leader_space:="keyFunc_enter"
+if(!keyset.leader_ralt)
+    keyset.leader_ralt:="keyFunc_doNothing"
 
-if(!keyset.space_f1)
-    keyset.space_f1:="keyFunc_openCpasDocs"
-; if(!keyset.space_f2)
-;     keyset.space_f2:="keyFunc_mathBoard"
-if(!keyset.space_f3)
-    keyset.space_f3:="keyFunc_translate"
-if(!keyset.space_f4)
-    keyset.space_f4:="keyFunc_winTransparent"
-if(!keyset.space_f5)
-    keyset.space_f5:="keyFunc_reload"
-if(!keyset.space_f6)
-    keyset.space_f6:="keyFunc_winPin"
-if(!keyset.space_f7)
-    keyset.space_f7:="keyFunc_doNothing"
-; if(!keyset.space_f8)
-;     keyset.space_f8:="keyFunc_getJSEvalString"
-if(!keyset.space_f9)
-    keyset.space_f9:="keyFunc_doNothing"
-if(!keyset.space_f10)
-    keyset.space_f10:="keyFunc_doNothing"
-if(!keyset.space_f11)
-    keyset.space_f11:="keyFunc_doNothing"
-if(!keyset.space_f12)
-    keyset.space_f12:="keyFunc_switchClipboard"
+if(!keyset.leader_f1)
+    keyset.leader_f1:="keyFunc_openCpasDocs"
+; if(!keyset.leader_f2)
+;     keyset.leader_f2:="keyFunc_mathBoard"
+if(!keyset.leader_f3)
+    keyset.leader_f3:="keyFunc_translate"
+if(!keyset.leader_f4)
+    keyset.leader_f4:="keyFunc_winTransparent"
+if(!keyset.leader_f5)
+    keyset.leader_f5:="keyFunc_reload"
+if(!keyset.leader_f6)
+    keyset.leader_f6:="keyFunc_winPin"
+if(!keyset.leader_f7)
+    keyset.leader_f7:="keyFunc_doNothing"
+; if(!keyset.leader_f8)
+;     keyset.leader_f8:="keyFunc_getJSEvalString"
+if(!keyset.leader_f9)
+    keyset.leader_f9:="keyFunc_doNothing"
+if(!keyset.leader_f10)
+    keyset.leader_f10:="keyFunc_doNothing"
+if(!keyset.leader_f11)
+    keyset.leader_f11:="keyFunc_doNothing"
+if(!keyset.leader_f12)
+    keyset.leader_f12:="keyFunc_switchClipboard"
 
 ; LAlt--------------------------------------------
 
-if(!keyset.space_lalt_a)
-    keyset.space_lalt_a:="keyFunc_moveWordLeft(3)"
-if(!keyset.space_lalt_b)
-    keyset.space_lalt_b:="keyFunc_moveDown(30)"
-if(!keyset.space_lalt_c)
-    keyset.space_lalt_c:="keyFunc_copy_2"
-if(!keyset.space_lalt_d)
-    keyset.space_lalt_d:="keyFunc_moveDown(3)"
-if(!keyset.space_lalt_e)
-    keyset.space_lalt_e:="keyFunc_moveUp(3)"
-if(!keyset.space_lalt_f)
-    keyset.space_lalt_f:="keyFunc_moveRight(5)"
-if(!keyset.space_lalt_g)
-    keyset.space_lalt_g:="keyFunc_moveWordRight(3)"
-if(!keyset.space_lalt_h)
-    keyset.space_lalt_h:="keyFunc_selectWordLeft(3)"
-if(!keyset.space_lalt_i)
-    keyset.space_lalt_i:="keyFunc_selectUp(3)"
-if(!keyset.space_lalt_j)
-    keyset.space_lalt_j:="keyFunc_selectLeft(5)"
-if(!keyset.space_lalt_k)
-    keyset.space_lalt_k:="keyFunc_selectDown(3)"
-if(!keyset.space_lalt_l)
-    keyset.space_lalt_l:="keyFunc_selectRight(5)"
-if(!keyset.space_lalt_m)
-    keyset.space_lalt_m:="keyFunc_doNothing"
-if(!keyset.space_lalt_n)
-    keyset.space_lalt_n:="keyFunc_selectDown(30)"
-if(!keyset.space_lalt_o)
-    keyset.space_lalt_o:="keyFunc_selectToPageEnd"
-if(!keyset.space_lalt_p)
-    keyset.space_lalt_p:="keyFunc_moveToPageBeginning"
-if(!keyset.space_lalt_q)
-    keyset.space_lalt_q:="keyFunc_doNothing"
-if(!keyset.space_lalt_r)
-    keyset.space_lalt_r:="keyFunc_forwardDeleteWord"
-if(!keyset.space_lalt_s)
-    keyset.space_lalt_s:="keyFunc_moveLeft(5)"
-if(!keyset.space_lalt_t)
-    keyset.space_lalt_t:="keyFunc_moveUp(30)"
-if(!keyset.space_lalt_u)
-    keyset.space_lalt_u:="keyFunc_selectToPageBeginning"
-if(!keyset.space_lalt_v)
-    keyset.space_lalt_v:="keyFunc_paste_2"
-if(!keyset.space_lalt_w)
-    keyset.space_lalt_w:="keyFunc_deleteWord"
-if(!keyset.space_lalt_x)
-    keyset.space_lalt_x:="keyFunc_cut_2"
-if(!keyset.space_lalt_y)
-    keyset.space_lalt_y:="keyFunc_selectUp(30)"
-if(!keyset.space_lalt_z)
-    keyset.space_lalt_z:="keyFunc_doNothing"
+if(!keyset.leader_lalt_a)
+    keyset.leader_lalt_a:="keyFunc_moveWordLeft(3)"
+if(!keyset.leader_lalt_b)
+    keyset.leader_lalt_b:="keyFunc_moveDown(30)"
+if(!keyset.leader_lalt_c)
+    keyset.leader_lalt_c:="keyFunc_copy_2"
+if(!keyset.leader_lalt_d)
+    keyset.leader_lalt_d:="keyFunc_moveDown(3)"
+if(!keyset.leader_lalt_e)
+    keyset.leader_lalt_e:="keyFunc_moveUp(3)"
+if(!keyset.leader_lalt_f)
+    keyset.leader_lalt_f:="keyFunc_moveRight(5)"
+if(!keyset.leader_lalt_g)
+    keyset.leader_lalt_g:="keyFunc_moveWordRight(3)"
+if(!keyset.leader_lalt_h)
+    keyset.leader_lalt_h:="keyFunc_selectWordLeft(3)"
+if(!keyset.leader_lalt_i)
+    keyset.leader_lalt_i:="keyFunc_selectUp(3)"
+if(!keyset.leader_lalt_j)
+    keyset.leader_lalt_j:="keyFunc_selectLeft(5)"
+if(!keyset.leader_lalt_k)
+    keyset.leader_lalt_k:="keyFunc_selectDown(3)"
+if(!keyset.leader_lalt_l)
+    keyset.leader_lalt_l:="keyFunc_selectRight(5)"
+if(!keyset.leader_lalt_m)
+    keyset.leader_lalt_m:="keyFunc_doNothing"
+if(!keyset.leader_lalt_n)
+    keyset.leader_lalt_n:="keyFunc_selectDown(30)"
+if(!keyset.leader_lalt_o)
+    keyset.leader_lalt_o:="keyFunc_selectToPageEnd"
+if(!keyset.leader_lalt_p)
+    keyset.leader_lalt_p:="keyFunc_moveToPageBeginning"
+if(!keyset.leader_lalt_q)
+    keyset.leader_lalt_q:="keyFunc_doNothing"
+if(!keyset.leader_lalt_r)
+    keyset.leader_lalt_r:="keyFunc_forwardDeleteWord"
+if(!keyset.leader_lalt_s)
+    keyset.leader_lalt_s:="keyFunc_moveLeft(5)"
+if(!keyset.leader_lalt_t)
+    keyset.leader_lalt_t:="keyFunc_moveUp(30)"
+if(!keyset.leader_lalt_u)
+    keyset.leader_lalt_u:="keyFunc_selectToPageBeginning"
+if(!keyset.leader_lalt_v)
+    keyset.leader_lalt_v:="keyFunc_paste_2"
+if(!keyset.leader_lalt_w)
+    keyset.leader_lalt_w:="keyFunc_deleteWord"
+if(!keyset.leader_lalt_x)
+    keyset.leader_lalt_x:="keyFunc_cut_2"
+if(!keyset.leader_lalt_y)
+    keyset.leader_lalt_y:="keyFunc_selectUp(30)"
+if(!keyset.leader_lalt_z)
+    keyset.leader_lalt_z:="keyFunc_doNothing"
 
-if(!keyset.space_lalt_backquote)
-    keyset.space_lalt_backquote:="keyFunc_doNothing"
-if(!keyset.space_lalt_1)
-    keyset.space_lalt_1:="keyFunc_winbind_binding(1)"
-if(!keyset.space_lalt_2)
-    keyset.space_lalt_2:="keyFunc_winbind_binding(2)"
-if(!keyset.space_lalt_3)
-    keyset.space_lalt_3:="keyFunc_winbind_binding(3)"
-if(!keyset.space_lalt_4)
-    keyset.space_lalt_4:="keyFunc_winbind_binding(4)"
-if(!keyset.space_lalt_5)
-    keyset.space_lalt_5:="keyFunc_winbind_binding(5)"
-if(!keyset.space_lalt_6)
-    keyset.space_lalt_6:="keyFunc_winbind_binding(6)"
-if(!keyset.space_lalt_7)
-    keyset.space_lalt_7:="keyFunc_winbind_binding(7)"
-if(!keyset.space_lalt_8)
-    keyset.space_lalt_8:="keyFunc_winbind_binding(8)"
-if(!keyset.space_lalt_9)
-    keyset.space_lalt_9:="keyFunc_winbind_binding(9)"
-if(!keyset.space_lalt_0)
-    keyset.space_lalt_0:="keyFunc_winbind_binding(10)"
-if(!keyset.space_lalt_minus)
-    keyset.space_lalt_minus:="keyFunc_doNothing"
-if(!keyset.space_lalt_equal)
-    keyset.space_lalt_equal:="keyFunc_doNothing"
-if(!keyset.space_lalt_backspace)
-    keyset.space_lalt_backspace:="keyFunc_deleteAll"
-if(!keyset.space_lalt_tab)
-    keyset.space_lalt_tab:="keyFunc_doNothing"
-if(!keyset.space_lalt_leftSquareBracket)
-    keyset.space_lalt_leftSquareBracket:="keyFunc_deleteToPageBeginning"
-if(!keyset.space_lalt_rightSquareBracket)
-    keyset.space_lalt_rightSquareBracket:="keyFunc_doNothing"
-if(!keyset.space_lalt_backslash)
-    keyset.space_lalt_backslash:="keyFunc_doNothing"
-if(!keyset.space_lalt_semicolon)
-    keyset.space_lalt_semicolon:="keyFunc_moveToPageEnd"
-if(!keyset.space_lalt_quote)
-    keyset.space_lalt_quote:="keyFunc_doNothing"
-if(!keyset.space_lalt_enter)
-    keyset.space_lalt_enter:="keyFunc_doNothing"
-if(!keyset.space_lalt_comma)
-    keyset.space_lalt_comma:="keyFunc_selectCurrentLine"
-if(!keyset.space_lalt_dot)
-    keyset.space_lalt_dot:="keyFunc_selectWordRight(3)"
-if(!keyset.space_lalt_slash)
-    keyset.space_lalt_slash:="keyFunc_deleteToPageEnd"
-if(!keyset.space_lalt_space)
-    keyset.space_lalt_space:="keyFunc_doNothing"
-if(!keyset.space_lalt_ralt)
-    keyset.space_lalt_ralt:="keyFunc_doNothing"
+if(!keyset.leader_lalt_backquote)
+    keyset.leader_lalt_backquote:="keyFunc_doNothing"
+if(!keyset.leader_lalt_1)
+    keyset.leader_lalt_1:="keyFunc_winbind_binding(1)"
+if(!keyset.leader_lalt_2)
+    keyset.leader_lalt_2:="keyFunc_winbind_binding(2)"
+if(!keyset.leader_lalt_3)
+    keyset.leader_lalt_3:="keyFunc_winbind_binding(3)"
+if(!keyset.leader_lalt_4)
+    keyset.leader_lalt_4:="keyFunc_winbind_binding(4)"
+if(!keyset.leader_lalt_5)
+    keyset.leader_lalt_5:="keyFunc_winbind_binding(5)"
+if(!keyset.leader_lalt_6)
+    keyset.leader_lalt_6:="keyFunc_winbind_binding(6)"
+if(!keyset.leader_lalt_7)
+    keyset.leader_lalt_7:="keyFunc_winbind_binding(7)"
+if(!keyset.leader_lalt_8)
+    keyset.leader_lalt_8:="keyFunc_winbind_binding(8)"
+if(!keyset.leader_lalt_9)
+    keyset.leader_lalt_9:="keyFunc_winbind_binding(9)"
+if(!keyset.leader_lalt_0)
+    keyset.leader_lalt_0:="keyFunc_winbind_binding(10)"
+if(!keyset.leader_lalt_minus)
+    keyset.leader_lalt_minus:="keyFunc_doNothing"
+if(!keyset.leader_lalt_equal)
+    keyset.leader_lalt_equal:="keyFunc_doNothing"
+if(!keyset.leader_lalt_backspace)
+    keyset.leader_lalt_backspace:="keyFunc_deleteAll"
+if(!keyset.leader_lalt_tab)
+    keyset.leader_lalt_tab:="keyFunc_doNothing"
+if(!keyset.leader_lalt_leftSquareBracket)
+    keyset.leader_lalt_leftSquareBracket:="keyFunc_deleteToPageBeginning"
+if(!keyset.leader_lalt_rightSquareBracket)
+    keyset.leader_lalt_rightSquareBracket:="keyFunc_doNothing"
+if(!keyset.leader_lalt_backslash)
+    keyset.leader_lalt_backslash:="keyFunc_doNothing"
+if(!keyset.leader_lalt_semicolon)
+    keyset.leader_lalt_semicolon:="keyFunc_moveToPageEnd"
+if(!keyset.leader_lalt_quote)
+    keyset.leader_lalt_quote:="keyFunc_doNothing"
+if(!keyset.leader_lalt_enter)
+    keyset.leader_lalt_enter:="keyFunc_doNothing"
+if(!keyset.leader_lalt_comma)
+    keyset.leader_lalt_comma:="keyFunc_selectCurrentLine"
+if(!keyset.leader_lalt_dot)
+    keyset.leader_lalt_dot:="keyFunc_selectWordRight(3)"
+if(!keyset.leader_lalt_slash)
+    keyset.leader_lalt_slash:="keyFunc_deleteToPageEnd"
+if(!keyset.leader_lalt_space)
+    keyset.leader_lalt_space:="keyFunc_doNothing"
+if(!keyset.leader_lalt_ralt)
+    keyset.leader_lalt_ralt:="keyFunc_doNothing"
 
 ;--------------------window-------------------
-if(!keyset.space_win_1)
-    keyset.space_win_1:="keyFunc_winbind_binding(1)"
-if(!keyset.space_win_2)
-    keyset.space_win_2:="keyFunc_winbind_binding(2)"
-if(!keyset.space_win_3)
-    keyset.space_win_3:="keyFunc_winbind_binding(3)"
-if(!keyset.space_win_4)
-    keyset.space_win_4:="keyFunc_winbind_binding(4)"
-if(!keyset.space_win_5)
-    keyset.space_win_5:="keyFunc_winbind_binding(5)"
-if(!keyset.space_win_6)
-    keyset.space_win_6:="keyFunc_winbind_binding(6)"
-if(!keyset.space_win_7)
-    keyset.space_win_7:="keyFunc_winbind_binding(7)"
-if(!keyset.space_win_8)
-    keyset.space_win_8:="keyFunc_winbind_binding(8)"
-if(!keyset.space_win_9)
-    keyset.space_win_9:="keyFunc_winbind_binding(9)"
-if(!keyset.space_win_0)
-    keyset.space_win_0:="keyFunc_winbind_binding(10)"
+if(!keyset.leader_win_1)
+    keyset.leader_win_1:="keyFunc_winbind_binding(1)"
+if(!keyset.leader_win_2)
+    keyset.leader_win_2:="keyFunc_winbind_binding(2)"
+if(!keyset.leader_win_3)
+    keyset.leader_win_3:="keyFunc_winbind_binding(3)"
+if(!keyset.leader_win_4)
+    keyset.leader_win_4:="keyFunc_winbind_binding(4)"
+if(!keyset.leader_win_5)
+    keyset.leader_win_5:="keyFunc_winbind_binding(5)"
+if(!keyset.leader_win_6)
+    keyset.leader_win_6:="keyFunc_winbind_binding(6)"
+if(!keyset.leader_win_7)
+    keyset.leader_win_7:="keyFunc_winbind_binding(7)"
+if(!keyset.leader_win_8)
+    keyset.leader_win_8:="keyFunc_winbind_binding(8)"
+if(!keyset.leader_win_9)
+    keyset.leader_win_9:="keyFunc_winbind_binding(9)"
+if(!keyset.leader_win_0)
+    keyset.leader_win_0:="keyFunc_winbind_binding(10)"
 
 ;--------------------other--------------------
 
-if(!keyset.space_lalt_wheelUp)
-    keyset.space_lalt_wheelUp:="keyFunc_mouseSpeedIncrease"
-if(!keyset.space_lalt_wheelDown)
-    keyset.space_lalt_wheelDown:="keyFunc_mouseSpeedDecrease"
+if(!keyset.leader_lalt_wheelUp)
+    keyset.leader_lalt_wheelUp:="keyFunc_mouseSpeedIncrease"
+if(!keyset.leader_lalt_wheelDown)
+    keyset.leader_lalt_wheelDown:="keyFunc_mouseSpeedDecrease"
 
 return

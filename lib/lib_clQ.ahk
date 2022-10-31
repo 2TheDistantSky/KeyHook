@@ -204,7 +204,7 @@ return
 
 ;  ,::
 ;  try
-;      gosub, % keyset.space_b_in_qbar
+;      gosub, % keyset.leader_b_in_qbar
 ;  return
 
 /::sendinput {/}

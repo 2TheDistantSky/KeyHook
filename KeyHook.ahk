@@ -57,18 +57,18 @@ Process Priority,,High
 start:
     ; Triggered: 此次按键事件是否触发了修改后的热键
     global Triggered
-    global SpacePressed
+    global LeaderPressed
 
 $Space::
     Triggered:=0
-    ; SpacePressed: Space 键状态标记，按下是1，松开是0
-    SpacePressed:=1
+    ; LeaderPressed: Space 键状态标记，按下是1，松开是0
+    LeaderPressed:=1
 
     SetTimer, setTriggered, -300 ; 300ms 犹豫操作时间
 
     KeyWait, Space
-    ; SpacePressed 优先置空，关闭功能的触发
-    SpacePressed:=""
+    ; LeaderPressed 优先置空，关闭功能的触发
+    LeaderPressed:=0
     if !Triggered
     {
         try
@@ -87,10 +87,11 @@ setTriggered:
     Triggered:=1
 return
 
-OnClipboardChange: ; 剪贴板内容改变时将运行
+; 剪贴板内容改变时将运行
+OnClipboardChange:
 
     ; 如果有复制操作时，capslock键没有按下，那就是系统原生复制
-    if (allowRunOnClipboardChange && !SpacePressed && CLsets.global.allowClipboard != "0")
+    if (allowRunOnClipboardChange && !LeaderPressed && CLsets.global.allowClipboard != "0")
     {
         try {
             clipSaver("s")
@@ -111,19 +112,19 @@ keyFunc_pasteSystem()
 return
 #if
 
-#If SpacePressed ;when capslock key press and hold
+#If LeaderPressed ;when leader key press and hold
 
 LAlt::return
 
 <!WheelUp::
     try
-    runFunc(keyset.space_lalt_wheelUp)
+    runFunc(keyset.leader_lalt_wheelUp)
     Triggered:=1
 return
 
 <!WheelDown::
     try
-    runFunc(keyset.space_lalt_wheelDown)
+    runFunc(keyset.leader_lalt_wheelDown)
     Triggered:=1
 return
 
@@ -198,79 +199,79 @@ esc::
 backspace::
 ralt::
     try
-    runFunc(keyset["space_" . A_ThisHotkey])
+    runFunc(keyset["leader_" . A_ThisHotkey])
     Triggered:=1
 Return
 
 `::
     try
-    runFunc(keyset.space_backQuote)
+    runFunc(keyset.leader_backQuote)
     Triggered:=1
 return
 
 -::
     try
-    runFunc(keyset.space_minus)
+    runFunc(keyset.leader_minus)
     Triggered:=1
 return
 
 =::
     try
-    runFunc(keyset.space_equal)
+    runFunc(keyset.leader_equal)
     Triggered:=1
 Return
 
 [::
     try
-    runFunc(keyset.space_leftSquareBracket)
+    runFunc(keyset.leader_leftSquareBracket)
     Triggered:=1
 Return
 
 ]::
     try
-    runFunc(keyset.space_rightSquareBracket)
+    runFunc(keyset.leader_rightSquareBracket)
     Triggered:=1
 Return
 
 \::
     try
-    runFunc(keyset.space_backslash)
+    runFunc(keyset.leader_backslash)
     Triggered:=1
 return
 
 `;::
 try
-runFunc(keyset.space_semicolon)
+runFunc(keyset.leader_semicolon)
 Triggered:=1
 Return
 
 '::
     try
-    runFunc(keyset.space_quote)
+    runFunc(keyset.leader_quote)
     Triggered:=1
 return
 
 ,::
     try
-    runFunc(keyset.space_comma)
+    runFunc(keyset.leader_comma)
     Triggered:=1
 Return
 
 .::
     try
-    runFunc(keyset.space_dot)
+    runFunc(keyset.leader_dot)
     Triggered:=1
 return
 
 /::
     try
-    runFunc(keyset.space_slash)
+    runFunc(keyset.leader_slash)
     Triggered:=1
 Return
 
 ;  RAlt::
 ;  try
-;      runFunc(keyset.space_ralt)
+;      runFunc(keyset.leader_ralt)
 ;  Triggered:=1
 ;  return
 
@@ -278,444 +279,444 @@ Return
 
 <!a::
     try
-    runFunc(keyset.space_lalt_a)
+    runFunc(keyset.leader_lalt_a)
     Triggered:=1
 return
 
 <!b::
     try
-    runFunc(keyset.space_lalt_b)
+    runFunc(keyset.leader_lalt_b)
     Triggered:=1
 Return
 
 <!c::
     try
-    runFunc(keyset.space_lalt_c)
+    runFunc(keyset.leader_lalt_c)
     Triggered:=1
 return
 
 <!d::
     try
-    runFunc(keyset.space_lalt_d)
+    runFunc(keyset.leader_lalt_d)
     Triggered:=1
 Return
 
 <!e::
     try
-    runFunc(keyset.space_lalt_e)
+    runFunc(keyset.leader_lalt_e)
     Triggered:=1
 Return
 
 <!f::
     try
-    runFunc(keyset.space_lalt_f)
+    runFunc(keyset.leader_lalt_f)
     Triggered:=1
 Return
 
 <!g::
     try
-    runFunc(keyset.space_lalt_g)
+    runFunc(keyset.leader_lalt_g)
     Triggered:=1
 Return
 
 <!h::
     try
-    runFunc(keyset.space_lalt_h)
+    runFunc(keyset.leader_lalt_h)
     Triggered:=1
 return
 
 <!i::
     try
-    runFunc(keyset.space_lalt_i)
+    runFunc(keyset.leader_lalt_i)
     Triggered:=1
 return
 
 <!j::
     try
-    runFunc(keyset.space_lalt_j)
+    runFunc(keyset.leader_lalt_j)
     Triggered:=1
 return
 
 <!k::
     try
-    runFunc(keyset.space_lalt_k)
+    runFunc(keyset.leader_lalt_k)
     Triggered:=1
 return
 
 <!l::
     try
-    runFunc(keyset.space_lalt_l)
+    runFunc(keyset.leader_lalt_l)
     Triggered:=1
 return
 
 <!m::
     try
-    runFunc(keyset.space_lalt_m)
+    runFunc(keyset.leader_lalt_m)
     Triggered:=1
 return
 
 <!n::
     try
-    runFunc(keyset.space_lalt_n)
+    runFunc(keyset.leader_lalt_n)
     Triggered:=1
 Return
 
 <!o::
     try
-    runFunc(keyset.space_lalt_o)
+    runFunc(keyset.leader_lalt_o)
     Triggered:=1
 return
 
 <!p::
     try
-    runFunc(keyset.space_lalt_p)
+    runFunc(keyset.leader_lalt_p)
     Triggered:=1
 Return
 
 <!q::
     try
-    runFunc(keyset.space_lalt_q)
+    runFunc(keyset.leader_lalt_q)
     Triggered:=1
 return
 
 <!r::
     try
-    runFunc(keyset.space_lalt_r)
+    runFunc(keyset.leader_lalt_r)
     Triggered:=1
 Return
 
 <!s::
     try
-    runFunc(keyset.space_lalt_s)
+    runFunc(keyset.leader_lalt_s)
     Triggered:=1
 Return
 
 <!t::
     try
-    runFunc(keyset.space_lalt_t)
+    runFunc(keyset.leader_lalt_t)
     Triggered:=1
 Return
 
 <!u::
     try
-    runFunc(keyset.space_lalt_u)
+    runFunc(keyset.leader_lalt_u)
     Triggered:=1
 return
 
 <!v::
     try
-    runFunc(keyset.space_lalt_v)
+    runFunc(keyset.leader_lalt_v)
     Triggered:=1
 Return
 
 <!w::
     try
-    runFunc(keyset.space_lalt_w)
+    runFunc(keyset.leader_lalt_w)
     Triggered:=1
 Return
 
 <!x::
     try
-    runFunc(keyset.space_lalt_x)
+    runFunc(keyset.leader_lalt_x)
     Triggered:=1
 Return
 
 <!y::
     try
-    runFunc(keyset.space_lalt_y)
+    runFunc(keyset.leader_lalt_y)
     Triggered:=1
 return
 
 <!z::
     try
-    runFunc(keyset.space_lalt_z)
+    runFunc(keyset.leader_lalt_z)
     Triggered:=1
 Return
 
 <!`::
-    runFunc(keyset.space_lalt_backquote)
+    runFunc(keyset.leader_lalt_backquote)
     Triggered:=1
 return
 
 <!1::
     try
-    runFunc(keyset.space_lalt_1)
+    runFunc(keyset.leader_lalt_1)
     Triggered:=1
 return
 
 <!2::
     try
-    runFunc(keyset.space_lalt_2)
+    runFunc(keyset.leader_lalt_2)
     Triggered:=1
 return
 
 <!3::
     try
-    runFunc(keyset.space_lalt_3)
+    runFunc(keyset.leader_lalt_3)
     Triggered:=1
 return
 
 <!4::
     try
-    runFunc(keyset.space_lalt_4)
+    runFunc(keyset.leader_lalt_4)
     Triggered:=1
 return
 
 <!5::
     try
-    runFunc(keyset.space_lalt_5)
+    runFunc(keyset.leader_lalt_5)
     Triggered:=1
 return
 
 <!6::
     try
-    runFunc(keyset.space_lalt_6)
+    runFunc(keyset.leader_lalt_6)
     Triggered:=1
 return
 
 <!7::
     try
-    runFunc(keyset.space_lalt_7)
+    runFunc(keyset.leader_lalt_7)
     Triggered:=1
 return
 
 <!8::
     try
-    runFunc(keyset.space_lalt_8)
+    runFunc(keyset.leader_lalt_8)
     Triggered:=1
 return
 
 <!9::
     try
-    runFunc(keyset.space_lalt_9)
+    runFunc(keyset.leader_lalt_9)
     Triggered:=1
 Return
 
 <!0::
     try
-    runFunc(keyset.space_lalt_0)
+    runFunc(keyset.leader_lalt_0)
     Triggered:=1
 Return
 
 <!-::
     try
-    runFunc(keyset.space_lalt_minus)
+    runFunc(keyset.leader_lalt_minus)
     Triggered:=1
 return
 
 <!=::
     try
-    runFunc(keyset.space_lalt_equal)
+    runFunc(keyset.leader_lalt_equal)
     Triggered:=1
 Return
 
 <!BackSpace::
     try
-    runFunc(keyset.space_lalt_backspace)
+    runFunc(keyset.leader_lalt_backspace)
     Triggered:=1
 Return
 
 <!Tab::
     try
-    runFunc(keyset.space_lalt_tab)
+    runFunc(keyset.leader_lalt_tab)
     Triggered:=1
 Return
 
 <![::
     try
-    runFunc(keyset.space_lalt_leftSquareBracket)
+    runFunc(keyset.leader_lalt_leftSquareBracket)
     Triggered:=1
 Return
 
 <!]::
     try
-    runFunc(keyset.space_lalt_rightSquareBracket)
+    runFunc(keyset.leader_lalt_rightSquareBracket)
     Triggered:=1
 Return
 
 <!\::
     try
-    runFunc(keyset.space_lalt_Backslash)
+    runFunc(keyset.leader_lalt_Backslash)
     Triggered:=1
 return
 
 <!`;::
 try
-runFunc(keyset.space_lalt_semicolon)
+runFunc(keyset.leader_lalt_semicolon)
 Triggered:=1
 Return
 
 <!'::
     try
-    runFunc(keyset.space_lalt_quote)
+    runFunc(keyset.leader_lalt_quote)
     Triggered:=1
 return
 
 <!Enter::
     try
-    runFunc(keyset.space_lalt_enter)
+    runFunc(keyset.leader_lalt_enter)
     Triggered:=1
 Return
 
 <!,::
     try
-    runFunc(keyset.space_lalt_comma)
+    runFunc(keyset.leader_lalt_comma)
     Triggered:=1
 Return
 
 <!.::
     try
-    runFunc(keyset.space_lalt_dot)
+    runFunc(keyset.leader_lalt_dot)
     Triggered:=1
 return
 
 <!/::
     try
-    runFunc(keyset.space_lalt_slash)
+    runFunc(keyset.leader_lalt_slash)
     Triggered:=1
 Return
 
 <!Space::
     try
-    runFunc(keyset.space_lalt_space)
+    runFunc(keyset.leader_lalt_space)
     Triggered:=1
 Return
 
 <!RAlt::
     try
-    runFunc(keyset.space_lalt_ralt)
+    runFunc(keyset.leader_lalt_ralt)
     Triggered:=1
 return
 
 <!F1::
     try
-    runFunc(keyset.space_lalt_f1)
+    runFunc(keyset.leader_lalt_f1)
     Triggered:=1
 return
 
 <!F2::
     try
-    runFunc(keyset.space_lalt_f2)
+    runFunc(keyset.leader_lalt_f2)
     Triggered:=1
 return
 
 <!F3::
     try
-    runFunc(keyset.space_lalt_f3)
+    runFunc(keyset.leader_lalt_f3)
     Triggered:=1
 return
 
 <!F4::
     try
-    runFunc(keyset.space_lalt_f4)
+    runFunc(keyset.leader_lalt_f4)
     Triggered:=1
 return
 
 <!F5::
     try
-    runFunc(keyset.space_lalt_f5)
+    runFunc(keyset.leader_lalt_f5)
     Triggered:=1
 return
 
 <!F6::
     try
-    runFunc(keyset.space_lalt_f6)
+    runFunc(keyset.leader_lalt_f6)
     Triggered:=1
 return
 
 <!F7::
     try
-    runFunc(keyset.space_lalt_f7)
+    runFunc(keyset.leader_lalt_f7)
     Triggered:=1
 return
 
 <!F8::
     try
-    runFunc(keyset.space_lalt_f8)
+    runFunc(keyset.leader_lalt_f8)
     Triggered:=1
 return
 
 <!F9::
     try
-    runFunc(keyset.space_lalt_f9)
+    runFunc(keyset.leader_lalt_f9)
     Triggered:=1
 return
 
 <!F10::
     try
-    runFunc(keyset.space_lalt_f10)
+    runFunc(keyset.leader_lalt_f10)
     Triggered:=1
 return
 
 <!F11::
     try
-    runFunc(keyset.space_lalt_f11)
+    runFunc(keyset.leader_lalt_f11)
     Triggered:=1
 return
 
 <!F12::
     try
-    runFunc(keyset.space_lalt_f12)
+    runFunc(keyset.leader_lalt_f12)
     Triggered:=1
 return
 
 #1::
     try
-    runFunc(keyset.space_win_1)
+    runFunc(keyset.leader_win_1)
     Triggered:=1
 return
 
 #2::
     try
-    runFunc(keyset.space_win_2)
+    runFunc(keyset.leader_win_2)
     Triggered:=1
 return
 
 #3::
     try
-    runFunc(keyset.space_win_3)
+    runFunc(keyset.leader_win_3)
     Triggered:=1
 return
 
 #4::
     try
-    runFunc(keyset.space_win_4)
+    runFunc(keyset.leader_win_4)
     Triggered:=1
 return
 
 #5::
     try
-    runFunc(keyset.space_win_5)
+    runFunc(keyset.leader_win_5)
     Triggered:=1
 return
 
 #6::
     try
-    runFunc(keyset.space_win_6)
+    runFunc(keyset.leader_win_6)
     Triggered:=1
 return
 
 #7::
     try
-    runFunc(keyset.space_win_7)
+    runFunc(keyset.leader_win_7)
     Triggered:=1
 return
 
 #8::
     try
-    runFunc(keyset.space_win_8)
+    runFunc(keyset.leader_win_8)
     Triggered:=1
 return
 
 #9::
     try
-    runFunc(keyset.space_win_9)
+    runFunc(keyset.leader_win_9)
     Triggered:=1
 return
 
 #0::
     try
-    runFunc(keyset.space_win_0)
+    runFunc(keyset.leader_win_0)
     Triggered:=1
 return
 ;  #s::
