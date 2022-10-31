@@ -60,19 +60,19 @@ Process Priority,,High
 start:
 
 ;-----------------START-----------------
-global SpaceFlag, CapsLock
+global SpaceFlag, SpacePressed
 
 $Space::
-;Capslock:  Capslock 键状态标记，按下是1，松开是0
-;SpaceFlag: 是否使用过 Capslock+ 功能标记，使用过会清除这个变量
-SpaceFlag:=CapsLock:=1
+; SpaceFlag: 是否使用过 Capslock+ 功能标记，使用过会清除这个变量
+SpaceFlag:=SpacePressed:=1
 
 SetTimer, setSpaceFlag, -300 ; 300ms 犹豫操作时间
 
 settimer, changeMouseSpeed, 50 ;暂时修改鼠标速度
 
 KeyWait, Space
-CapsLock:="" ;Capslock最优先置空，来关闭 Capslock+ 功能的触发
+; Space 键状态标记，按下是1，松开是0，优先置空，关闭功能的触发
+SpacePressed:=""
 if SpaceFlag
 {
     if keyset.press_space
@@ -83,7 +83,6 @@ if SpaceFlag
 }
 SpaceFlag:=""
 
-;
 if(winTapedX!=-1)
 {
     winsSort(winTapedX)
@@ -98,7 +97,7 @@ return
 OnClipboardChange:  ; 剪贴板内容改变时将运行
 
 ; 如果有复制操作时，capslock键没有按下，那就是系统原生复制
-if (allowRunOnClipboardChange && !CapsLock && CLsets.global.allowClipboard != "0")
+if (allowRunOnClipboardChange && !SpacePressed && CLsets.global.allowClipboard != "0")
 {
     try {
         clipSaver("s")
@@ -120,7 +119,7 @@ try
 return
 #if
 
-#If CapsLock ;when capslock key press and hold
+#If SpacePressed ;when capslock key press and hold
 
 LAlt::return
 
