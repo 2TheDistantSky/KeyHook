@@ -163,35 +163,35 @@ return
 ;  ControlFocus, , ahk_id %LV_show_Hwnd%
 ;  SendInput, {Down}
 ;  ControlFocus, , ahk_id %editHwnd%
-;  Triggered:=""
+;  Triggered:=1
 ;  return
 
 ;  e::
 ;  ControlFocus, , ahk_id %LV_show_Hwnd%
 ;  SendInput, {Up}
 ;  ControlFocus, , ahk_id %editHwnd%
-;  Triggered:=""
+;  Triggered:=1
 ;  return
 
 ;  -::
 ;  ControlFocus, , ahk_id %LV_show_Hwnd%
 ;  SendInput, {PgUp}
 ;  ControlFocus, , ahk_id %editHwnd%
-;  Triggered:=""
+;  Triggered:=1
 ;  return
 
 ;  =::
 ;  ControlFocus, , ahk_id %LV_show_Hwnd%
 ;  SendInput, {PgDn}
 ;  ControlFocus, , ahk_id %editHwnd%
-;  Triggered:=""
+;  Triggered:=1
 ;  return
 
 ;  i::
 ;  ControlFocus, , ahk_id %LV_show_Hwnd%
 ;  SendInput, {Up 5}
 ;  ControlFocus, , ahk_id %editHwnd%
-;  Triggered:=""
+;  Triggered:=1
 ;  return
 
 
@@ -199,7 +199,7 @@ return
 ;  ControlFocus, , ahk_id %LV_show_Hwnd%
 ;  SendInput, {Down 5}
 ;  ControlFocus, , ahk_id %editHwnd%
-;  Triggered:=""
+;  Triggered:=1
 ;  return
 
 ;  ,::
@@ -404,7 +404,7 @@ CLq()
     {
         ; ControlSetText, , %selText%, ahk_id %GuiHwnd%
         ; WinActivate, ahk_id %GuiHwnd%
-        ; Triggered:=""
+        ; Triggered:=1
         Gui, %GuiHwnd%:Default
         gosub, QGuiClose
 
@@ -437,7 +437,7 @@ CLq()
 
         WinSetTitle, ahk_id %GuiHwnd%, , Qbar ;上面show出窗口后会把窗口标题改成ahk_id xxxx，改回来
 
-        Triggered:=""
+        Triggered:=1
 
 
         SetTimer, closeWhenUnfocus, 50
