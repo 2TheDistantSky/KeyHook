@@ -4,35 +4,23 @@ SetTimer, initAll, -400 ;等个100毫秒，等待其他文件的include都完成
 return
 
 initAll:
-Suspend, On ;挂起所有热键
+    ; 挂起所有热键
+    Suspend, On
 
-IniRead, language, settings.ini, Global, language, 0
+    ; language
+    gosub, language_English
 
-;language
-gosub, language_English
+    ; 初始化设置
+    gosub, settingsInit
 
-;初始化设置
-gosub, settingsInit
+    gosub, bindWinsInit
+    ; 初始化翻译api
+    setTimer, youdaoApiInit, -1
+    ; +q初始化标志位
+    global needInitQ:=1
+    ; 初始化+q
+    CLq()
 
-gosub, bindWinsInit
-;初始化翻译api
-setTimer, youdaoApiInit, -1
-gosub, getDefaultBrowser
+    Suspend, Off
 
-global needInitQ:=1 ;+q初始化标志位
-CLq() ;初始化+q
-
-Suspend, Off
-
-return
-
-getDefaultBrowser:
-global defaultBrowser
-;获取默认浏览器图标，QWeb的listview用
-RegRead, defaultBrowser, HKCU, SOFTWARE\Microsoft\Windows\Shell\Associations\UrlAssociations\http\UserChoice, ProgId
-RegRead, defaultBrowser, HKLM, SOFTWARE\Classes\%defaultBrowser%\shell\open\command
-RegExMatch(defaultBrowser, "[a-zA-Z]:\\[\s\S]*\.exe", defaultBrowser)
-;~ MsgBox, % defaultBrowser
-if(defaultBrowser="")
-	defaultBrowser:="C:\Program Files (x86)\Internet Explorer\IExplore.exe"
 return
