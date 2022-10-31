@@ -61,7 +61,7 @@ start:
 
 $Space::
     Triggered:=0
-    ; LeaderPressed: Space 键状态标记，按下是1，松开是0
+    ; LeaderPressed: Leader 键状态标记，按下是1，松开是0
     LeaderPressed:=1
 
     SetTimer, setTriggered, -300 ; 300ms 犹豫操作时间
