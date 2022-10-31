@@ -327,7 +327,7 @@ keyFunc_pasteSystem(){
     ; 禁止 OnClipboardChange 运行，防止 Clipboard:=sClipboardAll 重复执行，导致偶尔会粘贴出空白
     ;  if(!CLsets.global.allowClipboard)  ;禁用剪贴板功能
     ;  {
-    ;      SpaceFlag:=""
+    ;      Triggered:=""
     ;      return
     ;  }
     if (whichClipboardNow!=0)
@@ -345,7 +345,7 @@ keyFunc_cut_1(){
     global
     if(CLsets.global.allowClipboard="0")  ;禁用剪贴板功能
     {
-        SpaceFlag:=""
+        Triggered:=""
         return
     }
 
@@ -376,7 +376,7 @@ keyFunc_copy_1(){
     global
     if(CLsets.global.allowClipboard="0")  ;禁用剪贴板功能
     {
-        SpaceFlag:=""
+        Triggered:=""
         return
     }
 
@@ -407,7 +407,7 @@ keyFunc_paste_1(){
     global
     if(CLsets.global.allowClipboard="0")  ;禁用剪贴板功能
     {
-        SpaceFlag:=""
+        Triggered:=""
         return
     }
 
@@ -431,7 +431,7 @@ keyFunc_cut_2(){
     global
     if(CLsets.global.allowClipboard="0")  ;禁用剪贴板功能
     {
-        SpaceFlag:=""
+        Triggered:=""
         return
     }
 
@@ -462,7 +462,7 @@ keyFunc_copy_2(){
     global
     if(CLsets.global.allowClipboard="0")  ;禁用剪贴板功能
     {
-        SpaceFlag:=""
+        Triggered:=""
         return
     }
 
@@ -493,7 +493,7 @@ keyFunc_paste_2(){
     global
     if(CLsets.global.allowClipboard="0")  ;禁用剪贴板功能
     {
-        SpaceFlag:=""
+        Triggered:=""
         return
     }
 
@@ -512,7 +512,7 @@ keyFunc_qbar(){
     SetTimer, setCLqActive, 50
     ;先关闭所有Caps热键，然后再打开
     ;防止其他功能在 qbar 出来这段时间因为输入文字而被触发
-    CapsLock:=SpaceFlag:=""
+    CapsLock:=Triggered:=""
     CLq()
     CapsLock:=1
     return

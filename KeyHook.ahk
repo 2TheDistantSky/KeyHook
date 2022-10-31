@@ -23,10 +23,9 @@ global CLversion:="Version: 3.2.0.0 | 2020-10-24`n`nCopyright Junkai Chen"
 global cClipboardAll ;capslock+ clipboard
 global caClipboardAll ;capslock+alt clipboard
 global sClipboardAll ;system clipboard
-global whichClipboardNow  ;0 system clipboard; 1 capslock+ clipboard; 2 capslock+alt clipboard
+global whichClipboardNow ;0 system clipboard; 1 capslock+ clipboard; 2 capslock+alt clipboard
 ;  global clipSaveArr=[]
 allowRunOnClipboardChange:=true
-
 
 #Include lib
 #Include lib_init.ahk ;The beginning of all things
@@ -55,65 +54,57 @@ allowRunOnClipboardChange:=true
 ;  #WinActivateForce
 Process Priority,,High
 
-
 start:
-
-;-----------------START-----------------
-global SpaceFlag, SpacePressed
+    global Triggered, SpacePressed
 
 $Space::
-; SpaceFlag: 是否使用过 Capslock+ 功能标记，使用过会清除这个变量
-; SpacePressed: Space 键状态标记，按下是1，松开是0
-SpaceFlag:=SpacePressed:=1
+    ; Triggered: 是否使用过 Capslock+ 功能标记，使用过会清除这个变量
+    ; SpacePressed: Space 键状态标记，按下是1，松开是0
+    Triggered:=SpacePressed:=1
 
-SetTimer, setSpaceFlag, -300 ; 300ms 犹豫操作时间
+    SetTimer, setTriggered, -300 ; 300ms 犹豫操作时间
 
-KeyWait, Space
-; SpacePressed 优先置空，关闭功能的触发
-SpacePressed:=""
-if SpaceFlag
-{
-    if keyset.press_space
+    KeyWait, Space
+    ; SpacePressed 优先置空，关闭功能的触发
+    SpacePressed:=""
+    if Triggered
     {
-        try
-            runFunc(keyset.press_space)
+        runFunc(keyset.press_space)
     }
-}
-SpaceFlag:=""
+    Triggered:=""
 
-if(winTapedX!=-1)
-{
-    winsSort(winTapedX)
-}
+    if(winTapedX!=-1)
+    {
+        winsSort(winTapedX)
+    }
 
 Return
 
-setSpaceFlag:
-SpaceFlag:=""
+setTriggered:
+    Triggered:=""
 return
 
-OnClipboardChange:  ; 剪贴板内容改变时将运行
+OnClipboardChange: ; 剪贴板内容改变时将运行
 
-; 如果有复制操作时，capslock键没有按下，那就是系统原生复制
-if (allowRunOnClipboardChange && !SpacePressed && CLsets.global.allowClipboard != "0")
-{
-    try {
-        clipSaver("s")
-    } catch _ {
-        sleep 100
-        clipSaver("s")
+    ; 如果有复制操作时，capslock键没有按下，那就是系统原生复制
+    if (allowRunOnClipboardChange && !SpacePressed && CLsets.global.allowClipboard != "0")
+    {
+        try {
+            clipSaver("s")
+        } catch _ {
+            sleep 100
+            clipSaver("s")
+        }
+        whichClipboardNow:=0
     }
-    whichClipboardNow:=0
-}
-allowRunOnClipboardChange:=true
+    allowRunOnClipboardChange:=true
 return
-
 
 ;----------------------------keys-set-start-----------------------------
 #if CLsets.global.allowClipboard != "0"
 $^v::
 try
-    keyFunc_pasteSystem()
+keyFunc_pasteSystem()
 return
 #if
 
@@ -122,15 +113,15 @@ return
 LAlt::return
 
 <!WheelUp::
-try
+    try
     runFunc(keyset.space_lalt_wheelUp)
-SpaceFlag:=""
+    Triggered:=""
 return
 
 <!WheelDown::
-try
+    try
     runFunc(keyset.space_lalt_wheelDown)
-SpaceFlag:=""
+    Triggered:=""
 return
 
 ;--::-------------------------
@@ -203,595 +194,585 @@ enter::
 esc::
 backspace::
 ralt::
-try
+    try
     runFunc(keyset["space_" . A_ThisHotkey])
-SpaceFlag:=""
+    Triggered:=""
 Return
 
 `::
-try
+    try
     runFunc(keyset.space_backQuote)
-SpaceFlag:=""
+    Triggered:=""
 return
 
-
 -::
-try
+    try
     runFunc(keyset.space_minus)
-SpaceFlag:=""
+    Triggered:=""
 return
 
 =::
-try
+    try
     runFunc(keyset.space_equal)
-SpaceFlag:=""
+    Triggered:=""
 Return
 
-
 [::
-try
+    try
     runFunc(keyset.space_leftSquareBracket)
-SpaceFlag:=""
+    Triggered:=""
 Return
 
 ]::
-try
+    try
     runFunc(keyset.space_rightSquareBracket)
-SpaceFlag:=""
+    Triggered:=""
 Return
 
 \::
-try
+    try
     runFunc(keyset.space_backslash)
-SpaceFlag:=""
+    Triggered:=""
 return
 
 `;::
 try
-    runFunc(keyset.space_semicolon)
-SpaceFlag:=""
+runFunc(keyset.space_semicolon)
+Triggered:=""
 Return
 
 '::
-try
+    try
     runFunc(keyset.space_quote)
-SpaceFlag:=""
+    Triggered:=""
 return
 
-
 ,::
-try
+    try
     runFunc(keyset.space_comma)
-SpaceFlag:=""
+    Triggered:=""
 Return
 
 .::
-try
+    try
     runFunc(keyset.space_dot)
-SpaceFlag:=""
+    Triggered:=""
 return
 
 /::
-try
+    try
     runFunc(keyset.space_slash)
-SpaceFlag:=""
+    Triggered:=""
 Return
 
 ;  RAlt::
 ;  try
 ;      runFunc(keyset.space_ralt)
-;  SpaceFlag:=""
+;  Triggered:=""
 ;  return
-
-
 
 ;---------------------caps+lalt----------------
 
 <!a::
-try
+    try
     runFunc(keyset.space_lalt_a)
-SpaceFlag:=""
+    Triggered:=""
 return
 
 <!b::
-try
+    try
     runFunc(keyset.space_lalt_b)
-SpaceFlag:=""
+    Triggered:=""
 Return
 
 <!c::
-try
+    try
     runFunc(keyset.space_lalt_c)
-SpaceFlag:=""
+    Triggered:=""
 return
 
 <!d::
-try
+    try
     runFunc(keyset.space_lalt_d)
-SpaceFlag:=""
+    Triggered:=""
 Return
 
 <!e::
-try
+    try
     runFunc(keyset.space_lalt_e)
-SpaceFlag:=""
+    Triggered:=""
 Return
 
 <!f::
-try
+    try
     runFunc(keyset.space_lalt_f)
-SpaceFlag:=""
+    Triggered:=""
 Return
 
 <!g::
-try
+    try
     runFunc(keyset.space_lalt_g)
-SpaceFlag:=""
+    Triggered:=""
 Return
 
 <!h::
-try
+    try
     runFunc(keyset.space_lalt_h)
-SpaceFlag:=""
+    Triggered:=""
 return
 
 <!i::
-try
+    try
     runFunc(keyset.space_lalt_i)
-SpaceFlag:=""
+    Triggered:=""
 return
 
 <!j::
-try
+    try
     runFunc(keyset.space_lalt_j)
-SpaceFlag:=""
+    Triggered:=""
 return
 
 <!k::
-try
+    try
     runFunc(keyset.space_lalt_k)
-SpaceFlag:=""
+    Triggered:=""
 return
 
 <!l::
-try
+    try
     runFunc(keyset.space_lalt_l)
-SpaceFlag:=""
+    Triggered:=""
 return
 
 <!m::
-try
+    try
     runFunc(keyset.space_lalt_m)
-SpaceFlag:=""
+    Triggered:=""
 return
 
 <!n::
-try
+    try
     runFunc(keyset.space_lalt_n)
-SpaceFlag:=""
+    Triggered:=""
 Return
 
 <!o::
-try
+    try
     runFunc(keyset.space_lalt_o)
-SpaceFlag:=""
+    Triggered:=""
 return
 
 <!p::
-try
+    try
     runFunc(keyset.space_lalt_p)
-SpaceFlag:=""
+    Triggered:=""
 Return
 
 <!q::
-try
+    try
     runFunc(keyset.space_lalt_q)
-SpaceFlag:=""
+    Triggered:=""
 return
 
 <!r::
-try
+    try
     runFunc(keyset.space_lalt_r)
-SpaceFlag:=""
+    Triggered:=""
 Return
 
 <!s::
-try
+    try
     runFunc(keyset.space_lalt_s)
-SpaceFlag:=""
+    Triggered:=""
 Return
 
 <!t::
-try
+    try
     runFunc(keyset.space_lalt_t)
-SpaceFlag:=""
+    Triggered:=""
 Return
 
 <!u::
-try
+    try
     runFunc(keyset.space_lalt_u)
-SpaceFlag:=""
+    Triggered:=""
 return
 
 <!v::
-try
+    try
     runFunc(keyset.space_lalt_v)
-SpaceFlag:=""
+    Triggered:=""
 Return
 
 <!w::
-try
+    try
     runFunc(keyset.space_lalt_w)
-SpaceFlag:=""
+    Triggered:=""
 Return
 
 <!x::
-try
+    try
     runFunc(keyset.space_lalt_x)
-SpaceFlag:=""
+    Triggered:=""
 Return
 
 <!y::
-try
+    try
     runFunc(keyset.space_lalt_y)
-SpaceFlag:=""
+    Triggered:=""
 return
 
 <!z::
-try
+    try
     runFunc(keyset.space_lalt_z)
-SpaceFlag:=""
+    Triggered:=""
 Return
 
 <!`::
     runFunc(keyset.space_lalt_backquote)
-SpaceFlag:=""
+    Triggered:=""
 return
 
 <!1::
-try
+    try
     runFunc(keyset.space_lalt_1)
-SpaceFlag:=""
+    Triggered:=""
 return
 
 <!2::
-try
+    try
     runFunc(keyset.space_lalt_2)
-SpaceFlag:=""
+    Triggered:=""
 return
 
 <!3::
-try
+    try
     runFunc(keyset.space_lalt_3)
-SpaceFlag:=""
+    Triggered:=""
 return
 
 <!4::
-try
+    try
     runFunc(keyset.space_lalt_4)
-SpaceFlag:=""
+    Triggered:=""
 return
 
 <!5::
-try
+    try
     runFunc(keyset.space_lalt_5)
-SpaceFlag:=""
+    Triggered:=""
 return
 
 <!6::
-try
+    try
     runFunc(keyset.space_lalt_6)
-SpaceFlag:=""
+    Triggered:=""
 return
 
 <!7::
-try
+    try
     runFunc(keyset.space_lalt_7)
-SpaceFlag:=""
+    Triggered:=""
 return
 
 <!8::
-try
+    try
     runFunc(keyset.space_lalt_8)
-SpaceFlag:=""
+    Triggered:=""
 return
 
 <!9::
-try
+    try
     runFunc(keyset.space_lalt_9)
-SpaceFlag:=""
+    Triggered:=""
 Return
 
 <!0::
-try
+    try
     runFunc(keyset.space_lalt_0)
-SpaceFlag:=""
+    Triggered:=""
 Return
 
 <!-::
-try
+    try
     runFunc(keyset.space_lalt_minus)
-SpaceFlag:=""
+    Triggered:=""
 return
 
 <!=::
-try
+    try
     runFunc(keyset.space_lalt_equal)
-SpaceFlag:=""
+    Triggered:=""
 Return
 
 <!BackSpace::
-try
+    try
     runFunc(keyset.space_lalt_backspace)
-SpaceFlag:=""
+    Triggered:=""
 Return
 
 <!Tab::
-try
+    try
     runFunc(keyset.space_lalt_tab)
-SpaceFlag:=""
+    Triggered:=""
 Return
 
 <![::
-try
+    try
     runFunc(keyset.space_lalt_leftSquareBracket)
-SpaceFlag:=""
+    Triggered:=""
 Return
 
 <!]::
-try
+    try
     runFunc(keyset.space_lalt_rightSquareBracket)
-SpaceFlag:=""
+    Triggered:=""
 Return
 
 <!\::
-try
+    try
     runFunc(keyset.space_lalt_Backslash)
-SpaceFlag:=""
+    Triggered:=""
 return
 
 <!`;::
 try
-    runFunc(keyset.space_lalt_semicolon)
-SpaceFlag:=""
+runFunc(keyset.space_lalt_semicolon)
+Triggered:=""
 Return
 
 <!'::
-try
+    try
     runFunc(keyset.space_lalt_quote)
-SpaceFlag:=""
+    Triggered:=""
 return
 
 <!Enter::
-try
+    try
     runFunc(keyset.space_lalt_enter)
-SpaceFlag:=""
+    Triggered:=""
 Return
 
 <!,::
-try
+    try
     runFunc(keyset.space_lalt_comma)
-SpaceFlag:=""
+    Triggered:=""
 Return
 
 <!.::
-try
+    try
     runFunc(keyset.space_lalt_dot)
-SpaceFlag:=""
+    Triggered:=""
 return
 
 <!/::
-try
+    try
     runFunc(keyset.space_lalt_slash)
-SpaceFlag:=""
+    Triggered:=""
 Return
 
 <!Space::
-try
+    try
     runFunc(keyset.space_lalt_space)
-SpaceFlag:=""
+    Triggered:=""
 Return
 
 <!RAlt::
-try
+    try
     runFunc(keyset.space_lalt_ralt)
-SpaceFlag:=""
+    Triggered:=""
 return
 
 <!F1::
-try
+    try
     runFunc(keyset.space_lalt_f1)
-SpaceFlag:=""
+    Triggered:=""
 return
 
 <!F2::
-try
+    try
     runFunc(keyset.space_lalt_f2)
-SpaceFlag:=""
+    Triggered:=""
 return
 
 <!F3::
-try
+    try
     runFunc(keyset.space_lalt_f3)
-SpaceFlag:=""
+    Triggered:=""
 return
 
 <!F4::
-try
+    try
     runFunc(keyset.space_lalt_f4)
-SpaceFlag:=""
+    Triggered:=""
 return
 
 <!F5::
-try
+    try
     runFunc(keyset.space_lalt_f5)
-SpaceFlag:=""
+    Triggered:=""
 return
 
 <!F6::
-try
+    try
     runFunc(keyset.space_lalt_f6)
-SpaceFlag:=""
+    Triggered:=""
 return
 
 <!F7::
-try
+    try
     runFunc(keyset.space_lalt_f7)
-SpaceFlag:=""
+    Triggered:=""
 return
 
 <!F8::
-try
+    try
     runFunc(keyset.space_lalt_f8)
-SpaceFlag:=""
+    Triggered:=""
 return
 
 <!F9::
-try
+    try
     runFunc(keyset.space_lalt_f9)
-SpaceFlag:=""
+    Triggered:=""
 return
 
 <!F10::
-try
+    try
     runFunc(keyset.space_lalt_f10)
-SpaceFlag:=""
+    Triggered:=""
 return
 
 <!F11::
-try
+    try
     runFunc(keyset.space_lalt_f11)
-SpaceFlag:=""
+    Triggered:=""
 return
 
 <!F12::
-try
+    try
     runFunc(keyset.space_lalt_f12)
-SpaceFlag:=""
+    Triggered:=""
 return
 
 #1::
-try
+    try
     runFunc(keyset.space_win_1)
-SpaceFlag:=""
+    Triggered:=""
 return
 
 #2::
-try
+    try
     runFunc(keyset.space_win_2)
-SpaceFlag:=""
+    Triggered:=""
 return
 
 #3::
-try
+    try
     runFunc(keyset.space_win_3)
-SpaceFlag:=""
+    Triggered:=""
 return
 
 #4::
-try
+    try
     runFunc(keyset.space_win_4)
-SpaceFlag:=""
+    Triggered:=""
 return
 
 #5::
-try
+    try
     runFunc(keyset.space_win_5)
-SpaceFlag:=""
+    Triggered:=""
 return
 
 #6::
-try
+    try
     runFunc(keyset.space_win_6)
-SpaceFlag:=""
+    Triggered:=""
 return
 
 #7::
-try
+    try
     runFunc(keyset.space_win_7)
-SpaceFlag:=""
+    Triggered:=""
 return
 
 #8::
-try
+    try
     runFunc(keyset.space_win_8)
-SpaceFlag:=""
+    Triggered:=""
 return
 
 #9::
-try
+    try
     runFunc(keyset.space_win_9)
-SpaceFlag:=""
+    Triggered:=""
 return
 
 #0::
-try
+    try
     runFunc(keyset.space_win_0)
-SpaceFlag:=""
+    Triggered:=""
 return
 ;  #s::
 ;      keyFunc_activateSideWin("l")
-;  SpaceFlag:=""
+;  Triggered:=""
 ;  return
 
 ;  #f::
 ;      keyFunc_activateSideWin("r")
-;      SpaceFlag:=""
+;      Triggered:=""
 ;  return
 
 ;  #e::
 ;      keyFunc_activateSideWin("u")
-;  SpaceFlag:=""
+;  Triggered:=""
 ;  return
 
 ;  #d::
 ;      keyFunc_activateSideWin("d")
-;      SpaceFlag:=""
+;      Triggered:=""
 ;  return
 
 ;  #w::
 ;      keyFunc_putWinToBottom()
-;      SpaceFlag:=""
+;      Triggered:=""
 ;  return
 
 ;  #a::
 ;      keyFunc_activateSideWin("fl")
-;      SpaceFlag:=""
+;      Triggered:=""
 ;  return
 
 ;  #g::
 ;      keyFunc_activateSideWin("fr")
-;      SpaceFlag:=""
+;      Triggered:=""
 ;  return
 
 ;  #z::
 ;      keyFunc_clearWinMinimizeStach()
-;      SpaceFlag:=""
+;      Triggered:=""
 ;  return
 
 ;  #x::
 ;      keyFunc_inWinMinimizeStack(true)
-;      SpaceFlag:=""
+;      Triggered:=""
 ;  return
 
 ;  #c::
 ;      keyFunc_inWinMinimizeStack()
-;      SpaceFlag:=""
+;      Triggered:=""
 ;  return
 
 ;  #v::
 ;      keyFunc_outWinMinimizeStack()
-;      SpaceFlag:=""
+;      Triggered:=""
 ;  return
-
-
 
 #If
 
-
-
-
 GuiClose:
 GuiEscape:
-Gui, Cancel
+    Gui, Cancel
 return
