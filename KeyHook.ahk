@@ -49,7 +49,6 @@ allowRunOnClipboardChange:=true
 #Include lib_bindWins.ahk
 #Include lib_winJump.ahk
 #Include lib_winTransparent.ahk
-#Include lib_mouseSpeed.ahk
 
 #MaxHotkeysPerInterval 500
 #NoEnv
@@ -64,14 +63,13 @@ global SpaceFlag, SpacePressed
 
 $Space::
 ; SpaceFlag: 是否使用过 Capslock+ 功能标记，使用过会清除这个变量
+; SpacePressed: Space 键状态标记，按下是1，松开是0
 SpaceFlag:=SpacePressed:=1
 
 SetTimer, setSpaceFlag, -300 ; 300ms 犹豫操作时间
 
-settimer, changeMouseSpeed, 50 ;暂时修改鼠标速度
-
 KeyWait, Space
-; Space 键状态标记，按下是1，松开是0，优先置空，关闭功能的触发
+; SpacePressed 优先置空，关闭功能的触发
 SpacePressed:=""
 if SpaceFlag
 {
