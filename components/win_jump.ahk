@@ -17,8 +17,6 @@ activateSideWin(UDLR){
     WinGetPos, winX, winY, winW, winH, ahk_id %winHwnd%
     MouseGetPos, mouX, mouY ; 保存原鼠标位置
     WinGetPos, , , screenW, screenH, Program Manager ; 获取全屏大小
-    
-
 
     goY:=winY+winH/2
     goX:=winX+winW/2
@@ -32,11 +30,11 @@ activateSideWin(UDLR){
         goY:=winY
     else if(UDLR="d")
         goY:=winY+winH
-    else if(UDLR="fl")  ; 从最左扫描
+    else if(UDLR="fl") ; 从最左扫描
         goX:=0
-    else if(UDLR="fr")  ; 从最右扫描
+    else if(UDLR="fr") ; 从最右扫描
         goX:=screenW
-    else if(UDLR="c"){  ; 中间
+    else if(UDLR="c"){ ; 中间
         goXY:=[]
         winW1_4:=winW/4
         winH1_4:=winH/4
@@ -79,7 +77,7 @@ activateSideWin(UDLR){
                 winJumpCover(winX, winY, winW, winH)
                 break
             }
-                
+
             ;  scanParticleSize:=5
             ;  if(A_index<=scanParticleSize){
             ;      goX += (winW-30)/scanParticleSize
@@ -88,18 +86,17 @@ activateSideWin(UDLR){
             ;      goX := winX+winW/scanParticleSize*(A_index-scanParticleSize-1)
             ;      goY := (winY+winH)-winH/scanParticleSize*(A_index-scanParticleSize-1)
             ;  }
-            
-            
-        ;  ;      scanParticleSize:=5
-        ;  ;      ; 从左上角扫到右下角
-        ;  ;      msgbox, % goX . "@" . winX . "@" . winX+winW . "||" . goY . "@" . winY . "@" . winY+winH
-        ;  ;      if(scanParticleSize>=A_index){
-        ;  ;          goX := winX+winW/scanParticleSize*(A_index)
-        ;  ;          goY := winY+winH/scanParticleSize*(A_index)
-        ;  ;      }else{  ; 从左下角到右上角
-        ;  ;          goX := winX+winW/scanParticleSize*(A_index-scanParticleSize-1)
-        ;  ;          goY := (winY+winH)-winH/scanParticleSize*(A_index-scanParticleSize-1)
-        ;  ;      }
+
+            ;  ;      scanParticleSize:=5
+            ;  ;      ; 从左上角扫到右下角
+            ;  ;      msgbox, % goX . "@" . winX . "@" . winX+winW . "||" . goY . "@" . winY . "@" . winY+winH
+            ;  ;      if(scanParticleSize>=A_index){
+            ;  ;          goX := winX+winW/scanParticleSize*(A_index)
+            ;  ;          goY := winY+winH/scanParticleSize*(A_index)
+            ;  ;      }else{  ; 从左下角到右上角
+            ;  ;          goX := winX+winW/scanParticleSize*(A_index-scanParticleSize-1)
+            ;  ;          goY := (winY+winH)-winH/scanParticleSize*(A_index-scanParticleSize-1)
+            ;  ;      }
             ;  msgbox, % A_index . "%" . sgoX . "@" . winX . "@" . winX+winW . "||" . goY . "@" . winY . "@" . winY+winH
             ;  if(goX<winX or goX>winX+winW or goY<winY or goY>winY+winH)
             ;      break
@@ -110,7 +107,7 @@ activateSideWin(UDLR){
 
         if(UDLR!="c" and (goX<0 or goX>screenW or goY<0 or goY>screenH))
             break
-        
+
         MouseMove, %goX%, %goY%, 0
         MouseGetPos, , , winNowId, controlClass
         ; 如果有需要忽略的窗口，则加速跳过
@@ -128,8 +125,8 @@ activateSideWin(UDLR){
         }
 
         WinGetPos, winNowX, winNowY, winNowW, winNowH, ahk_id %winNowId%
-        
-        ; 不是启动栏的话 
+
+        ; 不是启动栏的话
         if(controlClass!="MSTaskListWClass1"){
 
             ; 如果有需要跳过的窗口，跳过（若干次）
@@ -143,38 +140,37 @@ activateSideWin(UDLR){
             winJumpSelected:=winNowId
 
             settimer, winJumpActivate, 50
-            
+
             break
         }
-        
+
     }
     MouseMove, mouX, mouY, 0
     SystemCursor() ; 显示鼠标
-    return
+    Return
 }
-
 
 winJumpActivate:
-if(!GetKeyState("LAlt", "P") || !Capslock)
-{
-    ; clean
-    destroyWinJumpCover()
-    winJumpIgnoreCount:=0
-    ; /clean
-    WinSet, Top,, ahk_id %winJumpSelected%
-    WinActivate, ahk_id %winJumpSelected%
-    winJumpSelected:=""
-    settimer, winJumpActivate, off
-}
-return
+    if(!GetKeyState("LAlt", "P") || !Capslock)
+    {
+        ; clean
+        destroyWinJumpCover()
+        winJumpIgnoreCount:=0
+        ; /clean
+        WinSet, Top,, ahk_id %winJumpSelected%
+        WinActivate, ahk_id %winJumpSelected%
+        winJumpSelected:=""
+        settimer, winJumpActivate, off
+    }
+Return
 
 putWinToBottom(){
     global winJumpSelected
     ;  SendInput, !{esc}
     if(winJumpSelected)
-      WinSet, Bottom,, ahk_id %winJumpSelected%
+        WinSet, Bottom,, ahk_id %winJumpSelected%
     else
-      SendInput, !{esc}
+        SendInput, !{esc}
 }
 
 winJumpCover(x,y,w,h){
@@ -182,20 +178,20 @@ winJumpCover(x,y,w,h){
     IfWinExist
     {
         WinMove, , , %x%, %y%, %w%, %h%
-        return
+        Return
     }
     Gui, winCover:New, +HwndwinCoverHwnd
     Gui, -Caption -Disabled -Resize +ToolWindow +AlwaysOnTop
     Gui, Color, 000000
     Gui, +LastFound
     WinSet, Transparent, 100
-    Gui, Show, X%x% Y%y% W%w% H%h% 
-    return
+    Gui, Show, X%x% Y%y% W%w% H%h%
+Return
 }
 
 destroyWinJumpCover(){
     Gui, winCover:Destroy
-    return
+Return
 }
 ; 跳窗的时候忽略窗口，按几下忽略几个
 winJumpIgnore(){
@@ -206,24 +202,23 @@ winJumpIgnore(){
     else
         winJumpIgnoreCount++
     ;  msgbox, % winJumpIgnoreCount
-    return
+Return
 }
 
 cleanWinJumpIgnore:
-if(!GetKeyState("LAlt", "P") || !Capslock)
-{
-    ; clean
-    winJumpIgnoreCount:=0
-    settimer, cleanWinJumpIgnore, off
-}
-return
-
+    if(!GetKeyState("LAlt", "P") || !Capslock)
+    {
+        ; clean
+        winJumpIgnoreCount:=0
+        settimer, cleanWinJumpIgnore, off
+    }
+Return
 
 ; 窗口栈---------------
 clearWinMinimizeStach(){
     global minimizeWinArr
     minimizeWinArr:={}
-    return
+Return
 }
 
 popWinMinimizeStack(){
@@ -258,12 +253,12 @@ _inWinMinimizeStack(ifInStart:=false){
             ;  WinGetTitle, title , ahk_id %winNowId%
             ;  msgbox, % title
         }
-        
+
     }else{
         id:=WinExist("A")
         WinMinimize, ahk_id %id%
     }
-    
+
     if not ifInStart
         minimizeWinArr.insert(id)
     else

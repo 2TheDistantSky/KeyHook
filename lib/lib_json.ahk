@@ -79,11 +79,11 @@ class JSON
 
 				} else {
 					if InStr("{[", ch) {
-					; Check if Array() is overridden and if its return value has
+					; Check if Array() is overridden and if its Return value has
 					; the 'IsArray' property. If so, Array() will be called normally,
 					; otherwise, use a custom base object for arrays
 						static json_array := Func("Array").IsBuiltIn || ![].IsArray ? {IsArray: true} : 0
-					
+
 					; sacrifice readability for minor(actually negligible) performance gain
 						(ch == "{")
 							? ( is_key := true
@@ -92,12 +92,12 @@ class JSON
 						; ch == "["
 							: ( value := json_array ? new json_array : []
 							  , next := json_value_or_array_closing )
-						
+
 						ObjInsertAt(stack, 1, value)
 
 						if (this.keys)
 							this.keys[value] := []
-					
+
 					} else {
 						if (ch == quot) {
 							i := pos
@@ -121,7 +121,7 @@ class JSON
 							, value := StrReplace(value,  "\t", "`t")
 
 							pos := i ; update pos
-							
+
 							i := 0
 							while (i := InStr(value, "\",, i+1)) {
 								if !(SubStr(value, i+1, 1) == "u")
@@ -136,7 +136,7 @@ class JSON
 								key := value, next := ":"
 								continue
 							}
-						
+
 						} else {
 							value := SubStr(text, pos, i := RegExMatch(text, "[\]\},\s]|$",, pos)-pos)
 
@@ -166,16 +166,16 @@ class JSON
 					if (this.keys && this.keys.HasKey(holder))
 						this.keys[holder].Push(key)
 				}
-			
+
 			} ; while ( ... )
 
-			return this.rev ? this.Walk(root, "") : root[""]
+			Return this.rev ? this.Walk(root, "") : root[""]
 		}
 
 		ParseError(expect, ByRef text, pos, len:=1)
 		{
 			static quot := Chr(34), qurly := quot . "}"
-			
+
 			line := StrSplit(SubStr(text, 1, pos), "`n", "`r").Length()
 			col := pos - InStr(text, "`n",, -(StrLen(text)-pos+1))
 			msg := Format("{1}`n`nLine:`t{2}`nCol:`t{3}`nChar:`t{4}"
@@ -208,8 +208,8 @@ class JSON
 						ObjDelete(value, k)
 				}
 			}
-			
-			return this.rev.Call(holder, key, value)
+
+			Return this.rev.Call(holder, key, value)
 		}
 	}
 
@@ -244,7 +244,7 @@ class JSON
 				this.indent := "`n"
 			}
 
-			return this.Str({"": value}, "")
+			Return this.Str({"": value}, "")
 		}
 
 		Str(holder, key)
@@ -267,7 +267,7 @@ class JSON
 					is_array := value.IsArray
 				; Array() is not overridden, rollback to old method of
 				; identifying array-like objects. Due to the use of a for-loop
-				; sparse arrays such as '[1,,3]' are detected as objects({}). 
+				; sparse arrays such as '[1,,3]' are detected as objects({}).
 					if (!is_array) {
 						for i in value
 							is_array := i == A_Index
@@ -279,7 +279,7 @@ class JSON
 						Loop, % value.Length() {
 							if (this.gap)
 								str .= this.indent
-							
+
 							v := this.Str(value, A_Index)
 							str .= (v != "") ? v . "," : "null,"
 						}
@@ -305,11 +305,11 @@ class JSON
 					if (this.gap)
 						this.indent := stepback
 
-					return is_array ? "[" . str . "]" : "{" . str . "}"
+					Return is_array ? "[" . str . "]" : "{" . str . "}"
 				}
-			
+
 			} else ; is_number ? value : "value"
-				return ObjGetCapacity([value], 1)=="" ? value : this.Quote(value)
+				Return ObjGetCapacity([value], 1)=="" ? value : this.Quote(value)
 		}
 
 		Quote(string)
@@ -331,7 +331,7 @@ class JSON
 					string := StrReplace(string, m.Value, Format("\u{1:04x}", Ord(m.Value)))
 			}
 
-			return quot . string . quot
+			Return quot . string . quot
 		}
 	}
 
@@ -344,17 +344,17 @@ class JSON
 	 *     For use with reviver and replacer functions since AutoHotkey does not
 	 *     have an 'undefined' type. Returning blank("") or 0 won't work since these
 	 *     can't be distnguished from actual JSON values. This leaves us with objects.
-	 *     Replacer() - the caller may return a non-serializable AHK objects such as
+	 *     Replacer() - the caller may Return a non-serializable AHK objects such as
 	 *     ComObject, Func, BoundFunc, FileObject, RegExMatchObject, and Property to
 	 *     mimic the behavior of returning 'undefined' in JavaScript but for the sake
-	 *     of code readability and convenience, it's better to do 'return JSON.Undefined'.
+	 *     of code readability and convenience, it's better to do 'Return JSON.Undefined'.
 	 *     Internally, the property returns a ComObject with the variant type of VT_EMPTY.
 	 */
 	Undefined[]
 	{
 		get {
 			static empty := {}, vt_empty := ComObject(0, &empty, 1)
-			return vt_empty
+			Return vt_empty
 		}
 	}
 
@@ -366,9 +366,9 @@ class JSON
 		; so as to avoid directly storing the properties(used across sub-methods)
 		; into the "function object" itself.
 			if IsObject(method)
-				return (new this).Call(method, arg, args*)
+				Return (new this).Call(method, arg, args*)
 			else if (method == "")
-				return (new this).Call(arg, args*)
+				Return (new this).Call(arg, args*)
 		}
 	}
 }

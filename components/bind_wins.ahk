@@ -1,62 +1,116 @@
-﻿bindWinsInit:
-global winsInfos:={}
-global tapTimes:={1:0,2:0,3:0,4:0,5:0,6:0,7:0,8:0,9:0,10:0,11:0,12:0,13:0,14:0,15:0,16:0,17:0,18:0,19:0,20:0,btn:-1}
-global winTapedX ;winTapedX用于判断多窗口绑定的切换是哪个按键的，在CapsLock松开后winsSort()用来判定一次窗口在窗口组的位置
-global lastActiveWinId ;在用窗口激活时，现在正在激活状态的窗口id
-;标志有没获取过窗口信息，因为判断多次敲击需要等待时间，
-;超时了才执行绑定程序，在等待时间中唤醒绑定窗口会造成绑定失败，
-;所以增加一个标志，当唤醒窗口时，标志不假则立刻执行一次绑定程序
-global gettingWinInfo:=0
+﻿global winsInfoInit:=""
+winsInfoInit=
+(
+;------------ Encoding: UTF-16 ------------
+; The data for Window Binding, DO NOT modify the content of this file!
+; Just click the "X" in the upper right.
 
-initWinsInfos(n)
-{
+[0]
+bindType=
+class_0=
+exe_0=
+id_0=
+[1]
+bindType=
+class_0=
+exe_0=
+id_0=
+[2]
+bindType=
+class_0=
+exe_0=
+id_0=
+[3]
+bindType=
+class_0=
+exe_0=
+id_0=
+[4]
+bindType=
+class_0=
+exe_0=
+id_0=
+[5]
+bindType=
+class_0=
+exe_0=
+id_0=
+[6]
+bindType=
+class_0=
+exe_0=
+id_0=
+[7]
+bindType=
+class_0=
+exe_0=
+id_0=
+[8]
+bindType=
+class_0=
+exe_0=
+id_0=
+)
+
+bindWinsInit:
+  global winsInfos:={}
+  global tapTimes:={1:0,2:0,3:0,4:0,5:0,6:0,7:0,8:0,9:0,10:0,11:0,12:0,13:0,14:0,15:0,16:0,17:0,18:0,19:0,20:0,btn:-1}
+  global winTapedX ;winTapedX用于判断多窗口绑定的切换是哪个按键的，在CapsLock松开后winsSort()用来判定一次窗口在窗口组的位置
+  global lastActiveWinId ;在用窗口激活时，现在正在激活状态的窗口id
+  ;标志有没获取过窗口信息，因为判断多次敲击需要等待时间，
+  ;超时了才执行绑定程序，在等待时间中唤醒绑定窗口会造成绑定失败，
+  ;所以增加一个标志，当唤醒窗口时，标志不假则立刻执行一次绑定程序
+  global gettingWinInfo:=0
+
+  initWinsInfos(n)
+  {
     winsInfos[n]:={}
     winsInfos[n].class:={}
     winsInfos[n].exe:={}
     winsInfos[n].id:={}
-    return
-}
+    Return
+  }
 
-IfNotExist, winsInfo.ini
-{
-    FileAppend, %lang_winsInfosRecorderIniInit%, winsInfo.ini, UTF-16
-}
-lang_winsInfosRecorderIniInit:=""
+  IfNotExist, winsInfo.ini
+  {
+    FileAppend, %winsInfoInit%, winsInfo.ini, UTF-16
+  }
+  winsInfoInit:=""
 
-IniRead, infosSections, winsInfo.ini, , , %A_Space%
-sectionArr:=StrSplit(infosSections,"`n")
-loop, % tapTimes.MaxIndex() ;+1：把索引从0开始换成1开始
+  IniRead, infosSections, winsInfo.ini, , , %A_Space%
+  sectionArr:=StrSplit(infosSections,"`n")
+  loop, % tapTimes.MaxIndex() ;+1：把索引从0开始换成1开始
     initWinsInfos(A_index)
-;  {
-;  		_t:="group" . A_index-1 ;-1：把索引从1开始换成0开始
-;      winsInfos[_t]:={}
-;      winsInfos[_t].class:={}
-;      winsInfos[_t].exe:={}
-;      winsInfos[_t].id:={}
-;  }
-;取出winsInfosRecorder.ini里的数据，数组存着
-for sectionKey,sectionValue in sectionArr
-{
+  ;  {
+  ;  		_t:="group" . A_index-1 ;-1：把索引从1开始换成0开始
+  ;      winsInfos[_t]:={}
+  ;      winsInfos[_t].class:={}
+  ;      winsInfos[_t].exe:={}
+  ;      winsInfos[_t].id:={}
+  ;  }
+  ;取出winsInfosRecorder.ini里的数据，数组存着
+  for sectionKey,sectionValue in sectionArr
+  {
     ;~ winsInfos[sectionValue].length:=0
     IniRead, infosKeys, winsInfo.ini, %sectionValue%, , %A_Space%
     infosKeys:=RegExReplace(infosKeys, "m`n)=.*$")
     keyArr:=StrSplit(infosKeys,"`n")
     for key,keyValue in keyArr
     {
-        IniRead, infos, winsInfo.ini, %sectionValue%, %keyValue%, %A_Space%
-        if(keyValue="bindType") ;如果是bindType则直接记录，否则是class,exe,id，再开多一维数组记录
-        {
-            winsInfos[sectionValue].bindType:=infos
-        }
-        else
-        {
-            ni:=StrSplit(keyValue, "_") ;name and id
-            winsInfos[sectionValue][ni.1][ni.2]:=infos
-        }
+      IniRead, infos, winsInfo.ini, %sectionValue%, %keyValue%, %A_Space%
+      if(keyValue="bindType") ;如果是bindType则直接记录，否则是class,exe,id，再开多一维数组记录
+      {
+        winsInfos[sectionValue].bindType:=infos
+      }
+      else
+      {
+        ni:=StrSplit(keyValue, "_") ;name and id
+        winsInfos[sectionValue][ni.1][ni.2]:=infos
+      }
     }
-}
+  }
 
-return
+Return
 ;=function=start============================================================================
 getWinInfo(btnx, bindType)
 {
@@ -67,7 +121,7 @@ getWinInfo(btnx, bindType)
   if(bindType==1) ;如果是单窗口绑定
   {
     ;~ if(winId==infosGx.id.0) ;如果重复绑定，不执行
-      ;~ return
+    ;~ Return
     infosGx.bindType:=1
     infosGx.id.0:=winId
     infosGx.class.0:=winClass
@@ -82,7 +136,7 @@ getWinInfo(btnx, bindType)
     else
     {
       MsgBox, %lang_bw_noWIRini%
-      return
+      Return
     }
     loop, % infosGx.id.MaxIndex() ;除了第0个，其他都删掉
     {
@@ -95,7 +149,7 @@ getWinInfo(btnx, bindType)
       infosGx.id.remove(1)
     }
     ;~ infosGx.length:=1
-    return
+    Return
   }
 
   else if(bindType==2) ;如果多窗口绑定
@@ -127,7 +181,7 @@ getWinInfo(btnx, bindType)
       loop, % index ;查重，如果是已有的窗口，不添加
       {
         if(winId==infosGx.id[A_Index-1])
-          return
+          Return
       }
       ;~ SendInput, % index
       infosGx.class.insert(winClass)
@@ -175,9 +229,8 @@ getWinInfo(btnx, bindType)
     IniWrite, 3, winsInfo.ini, %btnx%, bindType		;写入bindType到ini
     ;~ infosGx.length:=winList
   }
-  return
+Return
 }
-
 
 activateWinAction(btnx)
 {
@@ -186,7 +239,7 @@ activateWinAction(btnx)
     gosub, doGetWinInfo
 
   infosGx:=winsInfos[btnx]
-   ;;;;;;;;;;;;;;;;;;;;;;;;;;;如果该按键上只绑了一个窗口
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;如果该按键上只绑了一个窗口
 
   if(infosGx.bindType==1)
   {
@@ -196,7 +249,7 @@ activateWinAction(btnx)
     {
       tempClass:=infosGx.class.0
       tempExe:=infosGx.exe.0
-      WinGet, tempId, ID,  ahk_exe %tempExe% ahk_class %tempClass%
+      WinGet, tempId, ID, ahk_exe %tempExe% ahk_class %tempClass%
       if(tempId)
       {
         IniWrite, %tempId%, winsInfo.ini, % btnx , id_0
@@ -215,12 +268,12 @@ activateWinAction(btnx)
       WinMinimize, ahk_id %tempId%
       if(lastActiveWinId!="" && lastActiveWinId!=tempId)
         WinActivate, ahk_id %lastActiveWinId%
-      return
+      Return
     }
 
     lastActiveWinId:=WinExist("A")
     WinActivate, ahk_id %tempId%
-    return
+    Return
   }
   ;;;;;;;;;;;;如果该按键上绑了多个独立窗口
   if(infosGx.bindType==2)
@@ -253,10 +306,10 @@ activateWinAction(btnx)
       IfWinActive, ahk_id %tempId%
       {
         WinMinimize, ahk_id %tempId%
-        return
+        Return
       }
       WinActivate, ahk_id %tempId%
-      return
+      Return
     }
 
     ;判断当前激活窗口id是否id组中的一个,是的话，激活它的下一个窗口，都不是的话，激活第一个
@@ -269,19 +322,19 @@ activateWinAction(btnx)
         {
           tempId:=infosGx.id.0
           WinActivate, ahk_id %tempId%
-          return
+          Return
         }
         tempId:=infosGx.id[A_index]
         WinActivate, ahk_id %tempId%
-        return
+        Return
       }
     }
     tempId:=infosGx.id.0
     WinActivate, ahk_id %tempId%
-    return
+    Return
   }
 
-  if(infosGx.bindType==3)  ;如果该按键绑定了某程序所有窗口
+  if(infosGx.bindType==3) ;如果该按键绑定了某程序所有窗口
   {
     winTapedX:=btnx ;将按下标记设置为当前按键
     tempClass:=infosGx.class.0
@@ -335,10 +388,10 @@ activateWinAction(btnx)
       IfWinActive, ahk_id %tempId%
       {
         WinMinimize, ahk_id %tempId%
-        return
+        Return
       }
       WinActivate, ahk_id %tempId%
-      return
+      Return
     }
 
     ;判断当前激活窗口id是否id组中的一个,是的话，激活它的下一个窗口，都不是的话，激活第一个
@@ -351,16 +404,16 @@ activateWinAction(btnx)
         {
           tempId:=infosGx.id.0
           WinActivate, ahk_id %tempId%
-          return
+          Return
         }
         tempId:=infosGx.id[A_index]
         WinActivate, ahk_id %tempId%
-        return
+        Return
       }
     }
     tempId:=infosGx.id.0
     WinActivate, ahk_id %tempId%
-    return
+    Return
   }
 }
 
@@ -378,48 +431,45 @@ winsSort(btnx)
     }
   }
   winTapedX:=-1 ;重置标记
-  return
+Return
 }
-
 
 tapTimes(btnx) ;判断敲击次数,绑定按键的入口函数，判断完敲击次数会调用doGetWinInfo，再调用getWinInfo
 {
   gettingWinInfo:=1
   SetTimer, doGetWinInfo, -500
   tapTimes.tapBtn:=btnx ;记录按下了哪个按键
-  if(tapTimes["btn" .  btnx]<1)
+  if(tapTimes["btn" . btnx]<1)
   {
-    tapTimes["btn" .  btnx]:=1
+    tapTimes["btn" . btnx]:=1
   }
   if(A_ThisHotkey = A_PriorHotkey && A_TimeSincePriorHotkey < 500)
   {
-    if(tapTimes["btn" .  btnx]<2)
+    if(tapTimes["btn" . btnx]<2)
     {
-      tapTimes["btn" .  btnx]:=2
+      tapTimes["btn" . btnx]:=2
     }
     else
     {
-      tapTimes["btn" .  btnx]:=3
+      tapTimes["btn" . btnx]:=3
       ;~ gosub, doGetWinInfo
     }
   }
-  return
+Return
 }
-
-
 
 doGetWinInfo:
-SetTimer, doGetWinInfo, Off
-winBtnx:=tapTimes.tapBtn
-tTapTimesx:=tapTimes["btn" . winBtnx]
-if(tTapTimesx>0&&winBtnx>-1)
-{
-  getWinInfo(winBtnx, tTapTimesx)
-  ;~ SendInput, % winBtnx . "@" . tTapTimesx0@2
-}
-tapTimes["btn" . winBtnx]:=0 ;重置敲击次数
-tapTimes.tapBtn:=-1 ;重置winBtnx
-gettingWinInfo:=0
-return
+  SetTimer, doGetWinInfo, Off
+  winBtnx:=tapTimes.tapBtn
+  tTapTimesx:=tapTimes["btn" . winBtnx]
+  if(tTapTimesx>0&&winBtnx>-1)
+  {
+    getWinInfo(winBtnx, tTapTimesx)
+    ;~ SendInput, % winBtnx . "@" . tTapTimesx0@2
+  }
+  tapTimes["btn" . winBtnx]:=0 ;重置敲击次数
+  tapTimes.tapBtn:=-1 ;重置winBtnx
+  gettingWinInfo:=0
+Return
 
 ;=function=end============================================================================
