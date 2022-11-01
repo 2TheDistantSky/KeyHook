@@ -25,7 +25,7 @@ $Space::
 
     SetTimer, setTriggered, -300
 
-    ; 等待 leader 鍵弹起
+    ; 等待 leader 键弹起
     KeyWait, Space
     LeaderPressed:=false
     if !Triggered
