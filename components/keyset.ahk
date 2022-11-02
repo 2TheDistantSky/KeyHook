@@ -59,7 +59,7 @@
     keyset.leader_f1:="keyFunc_openCpasDocs"
     keyset.leader_f2:="keyFunc_doNothing"
     keyset.leader_f3:="keyFunc_translate"
-    keyset.leader_f4:="keyFunc_winTransparent"
+    keyset.leader_f4:="keyFunc_doNothing"
     keyset.leader_f5:="keyFunc_reload"
     keyset.leader_f6:="keyFunc_winPin"
     keyset.leader_f7:="keyFunc_doNothing"
@@ -135,7 +135,7 @@
     keyset.leader_win_0:="keyFunc_winbind_binding(10)"
 
     keyset.press_space:="keyFunc_space"
-    keyset.leader_lalt_wheelUp:="keyFunc_mouseSpeedIncrease"
-    keyset.leader_lalt_wheelDown:="keyFunc_mouseSpeedDecrease"
+    keyset.leader_wheelUp:="keyFunc_winTransIncrease"
+    keyset.leader_wheelDown:="keyFunc_winTransDecrease"
 
 Return

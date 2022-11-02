@@ -11,7 +11,6 @@ Process Priority,,High
 #Include functions.ahk
 #Include bind_wins.ahk
 #Include win_jump.ahk
-#Include win_transparent.ahk
 
 start:
     ; Triggered: 此次按键事件是否触发了修改后的热键
@@ -25,7 +24,7 @@ $Space::
 
     SetTimer, setTriggered, -300
 
-    ; 等待 leader 键弹起
+    ; 等待 leader 鍵弹起
     KeyWait, Space
     LeaderPressed:=false
     if !Triggered
@@ -50,14 +49,14 @@ Return
 
 LAlt::Return
 
-<!WheelUp::
+WheelUp::
     try
-    runFunc(keyset.leader_lalt_wheelUp)
+    runFunc(keyset.leader_wheelUp)
 Return
 
-<!WheelDown::
+WheelDown::
     try
-    runFunc(keyset.leader_lalt_wheelDown)
+    runFunc(keyset.leader_wheelDown)
 Return
 
 a::

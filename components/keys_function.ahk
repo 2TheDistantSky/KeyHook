@@ -21,32 +21,39 @@ keyFunc_run(p){
     Return
 }
 
-keyFunc_toggleCapsLock(){
+keyFunc_toggleCapsLock() {
     SetCapsLockState, % GetKeyState("CapsLock","T") ? "Off" : "On"
     Return
 }
 
-keyFunc_mouseSpeedIncrease(){
-    global
-    mouseSpeed+=1
-    if(mouseSpeed>20)
-    {
-        mouseSpeed:=20
+keyFunc_winTransIncrease() {
+    winId := WinExist("A")
+    WinGet, trans, Transparent, ahk_id %winId%
+    if (!trans) {
+        Return
     }
-    showMsg("mouse speed: " . mouseSpeed, 1000)
-    setSettings("Global","mouseSpeed",mouseSpeed)
+
+    trans := (trans + 10 > 255) ? 255 : (trans + 10)
+    WinSet, Transparent, %trans%, ahk_id %winId%
+
+    if (trans == 255) {
+        WinGet, Off, Transparent, ahk_id %winId%
+        WinSet, Redraw
+    }
+
     Return
 }
 
-keyFunc_mouseSpeedDecrease(){
-    global
-    mouseSpeed-=1
-    if(mouseSpeed<1)
-    {
-        mouseSpeed:=1
+keyFunc_winTransDecrease() {
+    winId := WinExist("A")
+    WinGet, trans, Transparent, ahk_id %winId%
+    if (!trans) {
+        trans := 255
     }
-    showMsg("mouse speed: " . mouseSpeed, 1000)
-    setSettings("Global","mouseSpeed",mouseSpeed)
+
+    trans := (trans - 10 < 15) ? 15 : (trans - 10)
+
+    WinSet, Transparent, %trans%, ahk_id %winId%
     Return
 }
 
@@ -504,10 +511,6 @@ keyFunc_pushWinMinimizeStack(){
 
 keyFunc_unshiftWinMinimizeStack(){
     unshiftWinMinimizeStack()
-}
-
-keyFunc_winTransparent(){
-    winTransparent()
 }
 
 keyFunc_goToDefinition(){
