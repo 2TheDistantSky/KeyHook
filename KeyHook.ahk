@@ -335,6 +335,16 @@ t::
     runFunc("keyFunc_goForward")
 Return
 
+u::
+    try
+    runFunc("keyFunc_backspace")
+Return
+
+o::
+    try
+    runFunc("keyFunc_delete")
+Return
+
 v::
     try
     runFunc("keyFunc_paste")
