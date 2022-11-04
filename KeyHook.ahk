@@ -43,9 +43,9 @@ setTriggered:
     Triggered:=true
 Return
 
-;----------------------------keys-set-start-----------------------------
 #If LeaderPressed
 
+;---------------------------- win transparent -----------------------------
 WheelUp::
     try
     runFunc("keyFunc_winTransIncrease")
@@ -56,7 +56,7 @@ WheelDown::
     runFunc("keyFunc_winTransDecrease")
 Return
 
-; move
+;---------------------------- move -----------------------------
 d::
     try
     runFunc("keyFunc_moveWordLeft")
@@ -107,43 +107,7 @@ Return
     runFunc("keyFunc_moveToPageEnd")
 Return
 
-; other
-c::
-    try
-    runFunc("keyFunc_copy")
-Return
-
-q::
-    try
-    runFunc("keyFunc_goBack")
-Return
-
-t::
-    try
-    runFunc("keyFunc_goForward")
-Return
-
-v::
-    try
-    runFunc("keyFunc_paste")
-Return
-
-x::
-    try
-    runFunc("keyFunc_cut")
-Return
-
-y::
-    try
-    runFunc("keyFunc_redo")
-Return
-
-z::
-    try
-    runFunc("keyFunc_undo")
-Return
-
-; select
+;---------------------------- select -----------------------------
 a & w::
     try
     runFunc("keyFunc_selectToPageBeginning")
@@ -244,7 +208,7 @@ try
 runFunc("keyFunc_selectToPageEnd")
 Return
 
-; win bind
+;---------------------------- win bind -----------------------------
 #1::
     try
     runFunc("keyFunc_winbind_binding(1)")
@@ -295,7 +259,7 @@ Return
     runFunc("keyFunc_winbind_binding(10)")
 Return
 
-; win active
+;---------------------------- win activite -----------------------------
 1::
     try
     runFunc("keyFunc_winbind_activate(1)")
@@ -346,6 +310,42 @@ Return
     runFunc("keyFunc_winbind_activate(10)")
 Return
 
+;---------------------------- misc -----------------------------
+c::
+    try
+    runFunc("keyFunc_copy")
+Return
+
+q::
+    try
+    runFunc("keyFunc_goBack")
+Return
+
+t::
+    try
+    runFunc("keyFunc_goForward")
+Return
+
+v::
+    try
+    runFunc("keyFunc_paste")
+Return
+
+x::
+    try
+    runFunc("keyFunc_cut")
+Return
+
+y::
+    try
+    runFunc("keyFunc_redo")
+Return
+
+z::
+    try
+    runFunc("keyFunc_undo")
+Return
+
 F3::
     try
     runFunc("keyFunc_translate")
@@ -360,7 +360,6 @@ F6::
     try
     runFunc("keyFunc_winPin")
 Return
-
 
 #If
 
