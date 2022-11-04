@@ -44,8 +44,8 @@ setTriggered:
 Return
 
 #If LeaderPressed
-
-;---------------------------- move -----------------------------
+; free keys: bip
+; ---------------------------- move ----------------------------
 d::
     try
     runFunc("keyFunc_moveWordLeft")
@@ -96,7 +96,7 @@ Return
     runFunc("keyFunc_moveToPageEnd")
 Return
 
-;---------------------------- select -----------------------------
+; ---------------------------- select ----------------------------
 a & w::
     try
     runFunc("keyFunc_selectToPageBeginning")
@@ -197,7 +197,7 @@ try
 runFunc("keyFunc_selectToPageEnd")
 Return
 
-;---------------------------- win bind -----------------------------
+; ---------------------------- win bind ----------------------------
 #1::
     try
     runFunc("keyFunc_winbind_binding(1)")
@@ -248,7 +248,7 @@ Return
     runFunc("keyFunc_winbind_binding(10)")
 Return
 
-;---------------------------- win activite -----------------------------
+; ---------------------------- win activite ----------------------------
 1::
     try
     runFunc("keyFunc_winbind_activate(1)")
@@ -299,7 +299,7 @@ Return
     runFunc("keyFunc_winbind_activate(10)")
 Return
 
-;---------------------------- misc -----------------------------
+; ---------------------------- misc ----------------------------
 WheelUp::
     try
     runFunc("keyFunc_winTransIncrease")
