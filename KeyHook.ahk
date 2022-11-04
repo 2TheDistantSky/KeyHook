@@ -315,6 +315,16 @@ c::
     runFunc("keyFunc_copy")
 Return
 
+e::
+    try
+    runFunc("keyFunc_goToPreTab")
+Return
+
+n::
+    try
+    runFunc("keyFunc_goToNextTab")
+Return
+
 q::
     try
     runFunc("keyFunc_goBack")

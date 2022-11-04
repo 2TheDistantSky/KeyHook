@@ -518,3 +518,11 @@ keyFunc_goForward(){
 keyFunc_goBack(){
     SendInput, !{Left}
 }
+
+keyFunc_goToPreTab(){
+    SendInput, ^{PgUp}
+}
+
+keyFunc_goToNextTab(){
+    SendInput, ^{PgDn}
+}
