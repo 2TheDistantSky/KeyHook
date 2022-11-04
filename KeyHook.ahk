@@ -320,9 +320,24 @@ e::
     runFunc("keyFunc_goToPreTab")
 Return
 
+g::
+    try
+    runFunc("keyFunc_selectCurrentLine")
+Return
+
+h::
+    try
+    runFunc("keyFunc_selectCurrentWord")
+Return
+
 n::
     try
     runFunc("keyFunc_goToNextTab")
+Return
+
+o::
+    try
+    runFunc("keyFunc_delete")
 Return
 
 q::
@@ -338,11 +353,6 @@ Return
 u::
     try
     runFunc("keyFunc_backspace")
-Return
-
-o::
-    try
-    runFunc("keyFunc_delete")
 Return
 
 v::
@@ -384,6 +394,8 @@ F6::
     try
     runFunc("keyFunc_winPin")
 Return
+
+Esc::Esc
 
 #If
 

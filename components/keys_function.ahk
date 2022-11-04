@@ -405,11 +405,6 @@ keyFunc_pageMoveLineDown(i:=1){
     Return
 }
 
-keyFunc_openCpasDocs(){
-    Run, https://capslox.com/capslock-plus
-    Return
-}
-
 keyFunc_mediaPrev(){
     SendInput, {Media_Prev}
     Return
