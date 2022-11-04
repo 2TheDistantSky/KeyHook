@@ -6,7 +6,6 @@ Process Priority,,High
 #Include components
 #Include init.ahk
 #Include keys_function.ahk
-#Include keyset.ahk
 #Include youdao_translate.ahk
 #Include functions.ahk
 #Include bind_wins.ahk
@@ -30,7 +29,7 @@ $Space::
     if !Triggered
     {
         try
-        runFunc(keyset.press_space)
+        runFunc("keyFunc_space")
     }
 
     if(winTapedX!=-1)
@@ -47,555 +46,321 @@ Return
 ;----------------------------keys-set-start-----------------------------
 #If LeaderPressed
 
-LAlt::Return
-
 WheelUp::
     try
-    runFunc(keyset.leader_wheelUp)
+    runFunc("keyFunc_winTransIncrease")
 Return
 
 WheelDown::
     try
-    runFunc(keyset.leader_wheelDown)
+    runFunc("keyFunc_winTransDecrease")
 Return
 
-a::
-b::
-c::
+; move
 d::
-e::
+    try
+    runFunc("keyFunc_moveWordLeft")
+Return
+
 f::
-g::
-h::
-i::
+    try
+    runFunc("keyFunc_moveLeft")
+Return
+
 j::
+    try
+    runFunc("keyFunc_moveRight")
+Return
+
 k::
+    try
+    runFunc("keyFunc_moveWordRight")
+Return
+
 l::
-n::
+    try
+    runFunc("keyFunc_end")
+Return
+
 m::
-o::
-p::
-q::
+    try
+    runFunc("keyFunc_moveDown")
+Return
+
 r::
+    try
+    runFunc("keyFunc_moveUp")
+Return
+
 s::
-t::
-u::
-v::
+    try
+    runFunc("keyFunc_home")
+Return
+
 w::
-x::
-y::
-z::
-1::
-2::
-3::
-4::
-5::
-6::
-7::
-8::
-9::
-0::
-f1::
-f2::
-f3::
-f4::
-f5::
-f6::
-f7::
-f8::
-f9::
-f10::
-f11::
-f12::
-space::
-tab::
-enter::
-esc::
-backspace::
-ralt::
     try
-    runFunc(keyset["leader_" . A_ThisHotkey])
-Return
-
-`::
-    try
-    runFunc(keyset.leader_backQuote)
-Return
-
--::
-    try
-    runFunc(keyset.leader_minus)
-Return
-
-=::
-    try
-    runFunc(keyset.leader_equal)
-Return
-
-[::
-    try
-    runFunc(keyset.leader_leftSquareBracket)
-Return
-
-]::
-    try
-    runFunc(keyset.leader_rightSquareBracket)
-Return
-
-\::
-    try
-    runFunc(keyset.leader_backslash)
-Return
-
-`;::
-try
-runFunc(keyset.leader_semicolon)
-Triggered:=true
-Return
-
-'::
-    try
-    runFunc(keyset.leader_quote)
-Return
-
-,::
-    try
-    runFunc(keyset.leader_comma)
+    runFunc("keyFunc_moveToPageBeginning")
 Return
 
 .::
     try
-    runFunc(keyset.leader_dot)
+    runFunc("keyFunc_moveToPageEnd")
 Return
 
-/::
+; other
+c::
     try
-    runFunc(keyset.leader_slash)
+    runFunc("keyFunc_copy")
 Return
 
-;  RAlt::
-;  try
-;      runFunc(keyset.leader_ralt)
-;  Triggered:=true
-;  Return
-
-;---------------------caps+lalt----------------
-
-<!a::
+q::
     try
-    runFunc(keyset.leader_lalt_a)
+    runFunc("keyFunc_goBack")
 Return
 
-<!b::
+t::
     try
-    runFunc(keyset.leader_lalt_b)
+    runFunc("keyFunc_goForward")
 Return
 
-<!c::
+v::
     try
-    runFunc(keyset.leader_lalt_c)
+    runFunc("keyFunc_paste")
 Return
 
-<!d::
+x::
     try
-    runFunc(keyset.leader_lalt_d)
+    runFunc("keyFunc_cut")
 Return
 
-<!e::
+y::
     try
-    runFunc(keyset.leader_lalt_e)
+    runFunc("keyFunc_redo")
 Return
 
-<!f::
+z::
     try
-    runFunc(keyset.leader_lalt_f)
+    runFunc("keyFunc_undo")
 Return
 
-<!g::
+; select
+a & w::
     try
-    runFunc(keyset.leader_lalt_g)
+    runFunc("keyFunc_selectToPageBeginning")
 Return
 
-<!h::
+a & r::
     try
-    runFunc(keyset.leader_lalt_h)
+    runFunc("keyFunc_selectUp")
 Return
 
-<!i::
+a & s::
     try
-    runFunc(keyset.leader_lalt_i)
+    runFunc("keyFunc_selectHome")
 Return
 
-<!j::
+a & d::
     try
-    runFunc(keyset.leader_lalt_j)
+    runFunc("keyFunc_selectWordLeft")
 Return
 
-<!k::
+a & f::
     try
-    runFunc(keyset.leader_lalt_k)
+    runFunc("keyFunc_selectLeft")
 Return
 
-<!l::
+a & j::
     try
-    runFunc(keyset.leader_lalt_l)
+    runFunc("keyFunc_selectRight")
 Return
 
-<!m::
+a & k::
     try
-    runFunc(keyset.leader_lalt_m)
+    runFunc("keyFunc_selectWordRight")
 Return
 
-<!n::
+a & l::
     try
-    runFunc(keyset.leader_lalt_n)
+    runFunc("keyFunc_selectEnd")
 Return
 
-<!o::
+a & m::
     try
-    runFunc(keyset.leader_lalt_o)
+    runFunc("keyFunc_selectDown")
 Return
 
-<!p::
+a & .::
     try
-    runFunc(keyset.leader_lalt_p)
+    runFunc("keyFunc_selectToPageEnd")
 Return
 
-<!q::
-    try
-    runFunc(keyset.leader_lalt_q)
-Return
-
-<!r::
-    try
-    runFunc(keyset.leader_lalt_r)
-Return
-
-<!s::
-    try
-    runFunc(keyset.leader_lalt_s)
-Return
-
-<!t::
-    try
-    runFunc(keyset.leader_lalt_t)
-Return
-
-<!u::
-    try
-    runFunc(keyset.leader_lalt_u)
-Return
-
-<!v::
-    try
-    runFunc(keyset.leader_lalt_v)
-Return
-
-<!w::
-    try
-    runFunc(keyset.leader_lalt_w)
-Return
-
-<!x::
-    try
-    runFunc(keyset.leader_lalt_x)
-Return
-
-<!y::
-    try
-    runFunc(keyset.leader_lalt_y)
-Return
-
-<!z::
-    try
-    runFunc(keyset.leader_lalt_z)
-Return
-
-<!`::
-    runFunc(keyset.leader_lalt_backquote)
-Return
-
-<!1::
-    try
-    runFunc(keyset.leader_lalt_1)
-Return
-
-<!2::
-    try
-    runFunc(keyset.leader_lalt_2)
-Return
-
-<!3::
-    try
-    runFunc(keyset.leader_lalt_3)
-Return
-
-<!4::
-    try
-    runFunc(keyset.leader_lalt_4)
-Return
-
-<!5::
-    try
-    runFunc(keyset.leader_lalt_5)
-Return
-
-<!6::
-    try
-    runFunc(keyset.leader_lalt_6)
-Return
-
-<!7::
-    try
-    runFunc(keyset.leader_lalt_7)
-Return
-
-<!8::
-    try
-    runFunc(keyset.leader_lalt_8)
-Return
-
-<!9::
-    try
-    runFunc(keyset.leader_lalt_9)
-Return
-
-<!0::
-    try
-    runFunc(keyset.leader_lalt_0)
-Return
-
-<!-::
-    try
-    runFunc(keyset.leader_lalt_minus)
-Return
-
-<!=::
-    try
-    runFunc(keyset.leader_lalt_equal)
-Return
-
-<!BackSpace::
-    try
-    runFunc(keyset.leader_lalt_backspace)
-Return
-
-<!Tab::
-    try
-    runFunc(keyset.leader_lalt_tab)
-Return
-
-<![::
-    try
-    runFunc(keyset.leader_lalt_leftSquareBracket)
-Return
-
-<!]::
-    try
-    runFunc(keyset.leader_lalt_rightSquareBracket)
-Return
-
-<!\::
-    try
-    runFunc(keyset.leader_lalt_Backslash)
-Return
-
-<!`;::
+`; & w::
 try
-runFunc(keyset.leader_lalt_semicolon)
-Triggered:=true
+runFunc("keyFunc_selectToPageBeginning")
 Return
 
-<!'::
-    try
-    runFunc(keyset.leader_lalt_quote)
+`; & r::
+try
+runFunc("keyFunc_selectUp")
 Return
 
-<!Enter::
-    try
-    runFunc(keyset.leader_lalt_enter)
+`; & s::
+try
+runFunc("keyFunc_selectHome")
 Return
 
-<!,::
-    try
-    runFunc(keyset.leader_lalt_comma)
+`; & d::
+try
+runFunc("keyFunc_selectWordLeft")
 Return
 
-<!.::
-    try
-    runFunc(keyset.leader_lalt_dot)
+`; & f::
+try
+runFunc("keyFunc_selectLeft")
 Return
 
-<!/::
-    try
-    runFunc(keyset.leader_lalt_slash)
+`; & j::
+try
+runFunc("keyFunc_selectRight")
 Return
 
-<!Space::
-    try
-    runFunc(keyset.leader_lalt_space)
+`; & k::
+try
+runFunc("keyFunc_selectWordRight")
 Return
 
-<!RAlt::
-    try
-    runFunc(keyset.leader_lalt_ralt)
+`; & l::
+try
+runFunc("keyFunc_selectEnd")
 Return
 
-<!F1::
-    try
-    runFunc(keyset.leader_lalt_f1)
+`; & m::
+try
+runFunc("keyFunc_selectDown")
 Return
 
-<!F2::
-    try
-    runFunc(keyset.leader_lalt_f2)
+`; & .::
+try
+runFunc("keyFunc_selectToPageEnd")
 Return
 
-<!F3::
-    try
-    runFunc(keyset.leader_lalt_f3)
-Return
-
-<!F4::
-    try
-    runFunc(keyset.leader_lalt_f4)
-Return
-
-<!F5::
-    try
-    runFunc(keyset.leader_lalt_f5)
-Return
-
-<!F6::
-    try
-    runFunc(keyset.leader_lalt_f6)
-Return
-
-<!F7::
-    try
-    runFunc(keyset.leader_lalt_f7)
-Return
-
-<!F8::
-    try
-    runFunc(keyset.leader_lalt_f8)
-Return
-
-<!F9::
-    try
-    runFunc(keyset.leader_lalt_f9)
-Return
-
-<!F10::
-    try
-    runFunc(keyset.leader_lalt_f10)
-Return
-
-<!F11::
-    try
-    runFunc(keyset.leader_lalt_f11)
-Return
-
-<!F12::
-    try
-    runFunc(keyset.leader_lalt_f12)
-Return
-
+; win bind
 #1::
     try
-    runFunc(keyset.leader_win_1)
+    runFunc("keyFunc_winbind_binding(1)")
 Return
 
 #2::
     try
-    runFunc(keyset.leader_win_2)
+    runFunc("keyFunc_winbind_binding(2)")
 Return
 
 #3::
     try
-    runFunc(keyset.leader_win_3)
+    runFunc("keyFunc_winbind_binding(3)")
 Return
 
 #4::
     try
-    runFunc(keyset.leader_win_4)
+    runFunc("keyFunc_winbind_binding(4)")
 Return
 
 #5::
     try
-    runFunc(keyset.leader_win_5)
+    runFunc("keyFunc_winbind_binding(5)")
 Return
 
 #6::
     try
-    runFunc(keyset.leader_win_6)
+    runFunc("keyFunc_winbind_binding(6)")
 Return
 
 #7::
     try
-    runFunc(keyset.leader_win_7)
+    runFunc("keyFunc_winbind_binding(7)")
 Return
 
 #8::
     try
-    runFunc(keyset.leader_win_8)
+    runFunc("keyFunc_winbind_binding(8)")
 Return
 
 #9::
     try
-    runFunc(keyset.leader_win_9)
+    runFunc("keyFunc_winbind_binding(9)")
 Return
 
 #0::
     try
-    runFunc(keyset.leader_win_0)
+    runFunc("keyFunc_winbind_binding(10)")
 Return
 
-;  #s::
-;      keyFunc_activateSideWin("l")
-;  Triggered:=true
-;  Return
+; win active
+1::
+    try
+    runFunc("keyFunc_winbind_activate(1)")
+Return
 
-;  #f::
-;      keyFunc_activateSideWin("r")
-;  ;  Return
+2::
+    try
+    runFunc("keyFunc_winbind_activate(2)")
+Return
 
-;  #e::
-;      keyFunc_activateSideWin("u")
-;  Triggered:=true
-;  Return
+3::
+    try
+    runFunc("keyFunc_winbind_activate(3)")
+Return
 
-;  #d::
-;      keyFunc_activateSideWin("d")
-;  ;  Return
+4::
+    try
+    runFunc("keyFunc_winbind_activate(4)")
+Return
 
-;  #w::
-;      keyFunc_putWinToBottom()
-;  ;  Return
+5::
+    try
+    runFunc("keyFunc_winbind_activate(5)")
+Return
 
-;  #a::
-;      keyFunc_activateSideWin("fl")
-;  ;  Return
+6::
+    try
+    runFunc("keyFunc_winbind_activate(6)")
+Return
 
-;  #g::
-;      keyFunc_activateSideWin("fr")
-;  ;  Return
+7::
+    try
+    runFunc("keyFunc_winbind_activate(7)")
+Return
 
-;  #z::
-;      keyFunc_clearWinMinimizeStach()
-;  ;  Return
+8::
+    try
+    runFunc("keyFunc_winbind_activate(8)")
+Return
 
-;  #x::
-;      keyFunc_inWinMinimizeStack(true)
-;  ;  Return
+9::
+    try
+    runFunc("keyFunc_winbind_activate(9)")
+Return
 
-;  #c::
-;      keyFunc_inWinMinimizeStack()
-;  ;  Return
+0::
+    try
+    runFunc("keyFunc_winbind_activate(10)")
+Return
 
-;  #v::
-;      keyFunc_outWinMinimizeStack()
-;  ;  Return
+F3::
+    try
+    runFunc("keyFunc_translate")
+Return
+
+F5::
+    try
+    runFunc("keyFunc_reload")
+Return
+
+F6::
+    try
+    runFunc("keyFunc_winPin")
+Return
+
 
 #If
 
