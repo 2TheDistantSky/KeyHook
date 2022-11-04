@@ -345,6 +345,11 @@ z::
     runFunc("keyFunc_undo")
 Return
 
+,::
+    try
+    runFunc("keyFunc_goToDefinition")
+Return
+
 F3::
     try
     runFunc("keyFunc_translate")

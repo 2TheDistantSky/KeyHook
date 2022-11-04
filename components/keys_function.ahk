@@ -476,12 +476,6 @@ keyFunc_winPin(){
     Return
 }
 
-keyFunc_goCjkPage(){
-    global
-    run, http://cjkis.me
-    Return
-}
-
 ;keys functions end-------------
 ; testing arer ---
 
