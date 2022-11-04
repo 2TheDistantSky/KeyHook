@@ -45,17 +45,6 @@ Return
 
 #If LeaderPressed
 
-;---------------------------- win transparent -----------------------------
-WheelUp::
-    try
-    runFunc("keyFunc_winTransIncrease")
-Return
-
-WheelDown::
-    try
-    runFunc("keyFunc_winTransDecrease")
-Return
-
 ;---------------------------- move -----------------------------
 d::
     try
@@ -311,6 +300,16 @@ Return
 Return
 
 ;---------------------------- misc -----------------------------
+WheelUp::
+    try
+    runFunc("keyFunc_winTransIncrease")
+Return
+
+WheelDown::
+    try
+    runFunc("keyFunc_winTransDecrease")
+Return
+
 c::
     try
     runFunc("keyFunc_copy")
