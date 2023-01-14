@@ -8,11 +8,11 @@ activateSideWin(UDLR){
     ; 或者，如果选中的的窗口是最小化状态的 winJumpSelected
     if(!winJumpSelected){
         winHwnd := WinExist("A")
-        ;  isFromActiveWin:=true
+        ;  isFromActiveWin:=True
     }
     else{
         winHwnd := winJumpSelected
-        ;  isFromActiveWin:=false
+        ;  isFromActiveWin:=False
     }
     WinGetPos, winX, winY, winW, winH, ahk_id %winHwnd%
     MouseGetPos, mouX, mouY ; 保存原鼠标位置
@@ -233,10 +233,10 @@ pushWinMinimizeStack(){
 }
 
 unshiftWinMinimizeStack(){
-    _inWinMinimizeStack(true)
+    _inWinMinimizeStack(True)
 }
 
-_inWinMinimizeStack(ifInStart:=false){
+_inWinMinimizeStack(ifInStart:=False){
     global minimizeWinArr, winJumpSelected
     if not minimizeWinArr
         minimizeWinArr:={}

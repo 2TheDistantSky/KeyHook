@@ -117,7 +117,7 @@ Return
 
 ;提取Set里QRun的信息
 ;返回文件路径，runStr为供run运行的字符串，ifAdmin是否管理员权限运行，param程序运行参数
-extractSetStr(str, ByRef runStr:="", ByRef ifAdmin:=false, ByRef param:="")
+extractSetStr(str, ByRef runStr:="", ByRef ifAdmin:=False, ByRef param:="")
 {
     str:=Trim(str, " `t")
 
@@ -157,7 +157,7 @@ extractSetStr(str, ByRef runStr:="", ByRef ifAdmin:=false, ByRef param:="")
 
         if(RegExMatch(arr1,"i)^\*RunAs$"))
         {
-            ifAdmin:=true
+            ifAdmin:=True
             runStr:="*RunAs " . runStr
         }
         ;如果有参数
@@ -216,7 +216,7 @@ foolGui(switch=1){
 ;运行函数字符串，被运行的函数的参数只接收字符串，参数分割按 CSV 方式
 ; 最多支持3个参数
 runFunc(str){
-    Triggered:=true
+    Triggered:=True
     ;如果只给了函数名，没有括号，当做是不传参直接调用函数
     if(!RegExMatch(Trim(str), "\)$"))
     {
