@@ -10,11 +10,7 @@
 /.vscode
 /wb/node_modules
 # ignore files
-CapsLock+hotString.ini
-CapsLock+winsInfo.ini
-settings.ini
-winsInfo.ini
-CapsLock+settingsDemo.ini
+wins_info.json
 youdaoApiKey.ahk
 gain.md
 

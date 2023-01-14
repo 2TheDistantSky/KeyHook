@@ -1,9 +1,8 @@
 ﻿;等待其他文件的 include 完成
-SetTimer, initAll, -400
+SetTimer(initAll, -400)
 
-Return
-
-initAll:
+InitAll()
+{
     ; 挂起所有热键
     Suspend, On
 
@@ -13,4 +12,4 @@ initAll:
 
     Suspend, Off
 
-Return
+}

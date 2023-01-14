@@ -264,11 +264,3 @@ FuncWinTransDecrease()
 ;     global
 ;     activateWinAction(n)
 ; }
-
-; FuncWinbind_binding(n){
-;     global
-;     if(tapTimes[n]=="") {
-;         initWinsInfos(n)
-;     }
-;     tapTimes(n)
-; }
