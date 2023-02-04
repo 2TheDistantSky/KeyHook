@@ -180,11 +180,6 @@ FuncReload()
     Reload
 }
 
-FuncWinPin()
-{
-    WinSetAlwaysOnTop -1, "A"
-}
-
 FuncGoToDefinition()
 {
     SendInput "{F12}"
@@ -209,58 +204,3 @@ FuncGoToNextTab()
 {
     SendInput "^{PgDn}"
 }
-
-FuncSendStr(str, winTitle:="A")
-{
-    BlockInput(True)
-    ctl := ControlGetFocus(winTitle)
-    if ctl
-    {
-        loop parse, str
-            PostMessage(0x102, ord(A_LoopField),, ctl, winTitle)
-    }
-    else
-    {
-        loop parse, str
-            PostMessage(0x102, Ord(A_LoopField),,, winTitle) ;必须留空
-    }
-    BlockInput(False)
-
-    ; 说明 在QQ聊天窗口中是乱码，需要发送UTF-16BE编码
-}
-
-FuncWinTransIncrease()
-{
-    winId := WinExist("A")
-    trans := WinGetTransparent(winId)
-    if (!trans) {
-        Return
-    }
-
-    trans := (trans + 10 > 255) ? 255 : (trans + 10)
-    WinSetTransparent(trans, winId)
-
-    if (trans == 255) {
-        WinSetTransparent("Off", winId)
-        WinRedraw(winId)
-    }
-}
-
-FuncWinTransDecrease()
-{
-    winId := WinExist("A")
-    trans := WinGetTransparent(winId)
-    if (!trans) {
-        trans := 255
-    }
-
-    trans := (trans - 10 < 15) ? 15 : (trans - 10)
-
-    WinSetTransparent(trans, winId)
-}
-
-;winbind-------------
-; FuncWinbind_activate(n){
-;     global
-;     activateWinAction(n)
-; }
