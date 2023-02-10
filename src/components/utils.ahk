@@ -1,5 +1,7 @@
 RunFunc(str)
 {
+    global triggered
+
     triggered := true
     ;如果只给了函数名，没有括号，当做是不传参直接调用函数
     if (!RegExMatch(Trim(str), "\)$")) {
