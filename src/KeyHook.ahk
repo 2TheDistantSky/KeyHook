@@ -39,7 +39,6 @@ SetTriggered()
 
 #HotIf leaderPressed
 
-; free keys: abip
 ; ---------------------------- move ----------------------------
 d:: RunFunc("FuncMoveWordLeft")
 f:: RunFunc("FuncMoveLeft")
@@ -114,24 +113,37 @@ a & .:: RunFunc("FuncSelectToPageEnd")
 WheelUp:: RunFunc("WinTransIncrease")
 WheelDown:: RunFunc("WinTransDecrease")
 
-c:: RunFunc("FuncCopy")
+b:: RunFunc("FuncBracketJmp")
+c:: RunFunc("FuncTogBk")
 e:: RunFunc("FuncGoToPreTab")
-g:: RunFunc("FuncSelectCurrentLine")
-h:: RunFunc("FuncSelectCurrentWord")
+g:: RunFunc("FuncGoTo")
+h:: RunFunc("FuncSelectTo")
+i:: RunFunc("FuncSelectPair")
 n:: RunFunc("FuncGoToNextTab")
 o:: RunFunc("FuncDelete")
+p:: RunFunc("FuncChgPair")
 q:: RunFunc("FuncGoBack")
 t:: RunFunc("FuncGoForward")
 u:: RunFunc("FuncBackspace")
-v:: RunFunc("FuncPaste")
-x:: RunFunc("FuncCut")
+v:: RunFunc("FuncViewBk")
+x:: RunFunc("FuncDelTo")
 y:: RunFunc("FuncRedo")
 z:: RunFunc("FuncUndo")
 
 ,:: RunFunc("FuncGoToDefinition")
+[:: RunFunc("FuncPreBk")
+]:: RunFunc("FuncNextBk")
 
 F5:: RunFunc("FuncReload")
 F6:: RunFunc("ToggleWinPin")
+
+; ---------------------------- LAlt ----------------------------
+<!r::!Up
+<!m::!Down
+<!f::!Left
+<!j::!Right
+<!s::!Home
+<!l::!End
 
 #include customized_cfg.ahk
 
