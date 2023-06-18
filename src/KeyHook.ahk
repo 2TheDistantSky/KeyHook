@@ -11,6 +11,8 @@
 global triggered := false
 ; 记录 leader 键状态
 global leaderPressed := false
+; 选择模式
+global selectMode := false
 
 $Space::
 {
@@ -37,9 +39,20 @@ SetTriggered()
     triggered := true
 }
 
-#HotIf leaderPressed
+#HotIf leaderPressed && selectMode
+d:: RunFunc("FuncSelectWordLeft")
+f:: RunFunc("FuncSelectLeft")
+j:: RunFunc("FuncSelectRight")
+k:: RunFunc("FuncSelectWordRight")
+l:: RunFunc("FuncSelectEnd")
+m:: RunFunc("FuncSelectDown")
+r:: RunFunc("FuncSelectUp")
+s:: RunFunc("FuncSelectHome")
+w:: RunFunc("FuncSelectToPageBeginning")
+.:: RunFunc("FuncSelectToPageEnd")
+#HotIf
 
-; ---------------------------- move ----------------------------
+#HotIf leaderPressed && !selectMode
 d:: RunFunc("FuncMoveWordLeft")
 f:: RunFunc("FuncMoveLeft")
 j:: RunFunc("FuncMoveRight")
@@ -50,40 +63,7 @@ r:: RunFunc("FuncMoveUp")
 s:: RunFunc("FuncHome")
 w:: RunFunc("FuncMoveToPageBeginning")
 .:: RunFunc("FuncMoveToPageEnd")
-
-; ---------------------------- select ----------------------------
-Ctrl & d:: RunFunc("FuncSelectWordLeft")
-Ctrl & f:: RunFunc("FuncSelectLeft")
-Ctrl & j:: RunFunc("FuncSelectRight")
-Ctrl & k:: RunFunc("FuncSelectWordRight")
-Ctrl & l:: RunFunc("FuncSelectEnd")
-Ctrl & m:: RunFunc("FuncSelectDown")
-Ctrl & r:: RunFunc("FuncSelectUp")
-Ctrl & s:: RunFunc("FuncSelectHome")
-Ctrl & w:: RunFunc("FuncSelectToPageBeginning")
-Ctrl & .:: RunFunc("FuncSelectToPageEnd")
-
-a & d:: RunFunc("FuncSelectWordLeft")
-a & f:: RunFunc("FuncSelectLeft")
-a & j:: RunFunc("FuncSelectRight")
-a & k:: RunFunc("FuncSelectWordRight")
-a & l:: RunFunc("FuncSelectEnd")
-a & m:: RunFunc("FuncSelectDown")
-a & r:: RunFunc("FuncSelectUp")
-a & s:: RunFunc("FuncSelectHome")
-a & w:: RunFunc("FuncSelectToPageBeginning")
-a & .:: RunFunc("FuncSelectToPageEnd")
-
-`; & d:: RunFunc("FuncSelectWordLeft")
-`; & f:: RunFunc("FuncSelectLeft")
-`; & j:: RunFunc("FuncSelectRight")
-`; & k:: RunFunc("FuncSelectWordRight")
-`; & l:: RunFunc("FuncSelectEnd")
-`; & m:: RunFunc("FuncSelectDown")
-`; & r:: RunFunc("FuncSelectUp")
-`; & s:: RunFunc("FuncSelectHome")
-`; & w:: RunFunc("FuncSelectToPageBeginning")
-`; & .:: RunFunc("FuncSelectToPageEnd")
+#HotIf
 
 ; ---------------------------- win bind ----------------------------
 #0:: RunFunc("GetWinInfo(0)")
@@ -97,6 +77,7 @@ a & .:: RunFunc("FuncSelectToPageEnd")
 #8:: RunFunc("GetWinInfo(8)")
 #9:: RunFunc("GetWinInfo(9)")
 
+#HotIf leaderPressed
 ; ---------------------------- win activite ----------------------------
 0:: RunFunc("ActivateWin(0)")
 1:: RunFunc("ActivateWin(1)")
@@ -125,7 +106,7 @@ p:: RunFunc("FuncChgPair")
 q:: RunFunc("FuncGoBack")
 t:: RunFunc("FuncGoForward")
 u:: RunFunc("FuncBackspace")
-v:: RunFunc("FuncViewBk")
+v:: RunFunc("FuncTogMode")
 x:: RunFunc("FuncDelTo")
 y:: RunFunc("FuncRedo")
 z:: RunFunc("FuncUndo")
