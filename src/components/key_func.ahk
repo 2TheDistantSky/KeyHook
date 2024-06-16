@@ -255,11 +255,3 @@ FuncNextBk()
 {
     SendInput "!{]}"
 }
-
-FuncTogMode()
-{
-    global selectMode
-
-    selectMode := !selectMode
-    SendInput "{esc}"
-}
