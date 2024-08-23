@@ -1,6 +1,13 @@
 #Requires AutoHotkey >= 2.0
 #SingleInstance Force
 
+if not A_IsAdmin
+{
+    AutoHotkeyPath := A_AhkPath
+    Run '*RunAs ' AutoHotkeyPath " " A_ScriptFullPath
+    ExitApp
+}
+
 #include components/key_func.ahk
 #include components/win_bind.ahk
 #Include components/win_trans.ahk
@@ -104,7 +111,6 @@ p:: RunFunc("FuncChgPair")
 q:: RunFunc("FuncGoBack")
 t:: RunFunc("FuncGoForward")
 u:: RunFunc("FuncBackspace")
-v:: RunFunc("FuncTogMode")
 x:: RunFunc("FuncDelTo")
 y:: RunFunc("FuncRedo")
 z:: RunFunc("FuncUndo")
