@@ -3,8 +3,7 @@
 
 if not A_IsAdmin
 {
-    AutoHotkeyPath := A_AhkPath
-    Run '*RunAs ' AutoHotkeyPath " " A_ScriptFullPath
+    Run '*RunAs ' A_AhkPath " " A_ScriptFullPath
     ExitApp
 }
 
