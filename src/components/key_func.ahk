@@ -205,53 +205,27 @@ FuncGoToNextTab()
     SendInput "^{PgDn}"
 }
 
-/* need MetaGo extension */
 FuncBracketJmp()
 {
     SendInput "+^{\}"
 }
 
-FuncGoTo()
-{
-    SendInput "!{/}"
-}
-
-FuncDelTo()
-{
-    SendInput "!{d}"
-}
-
-FuncChgPair()
-{
-    SendInput "!{p}"
-}
-
-FuncSelectPair()
-{
-    SendInput "+!{p}"
-}
-
-FuncSelectTo()
-{
-    SendInput "+!{/}"
-}
-
 FuncTogBk()
 {
-    SendInput "!{'}"
-}
-
-FuncViewBk()
-{
-    SendInput "!{\}"
+    SendInput "^!{k}"
 }
 
 FuncPreBk()
 {
-    SendInput "!{[}"
+    SendInput "^!{j}"
 }
 
 FuncNextBk()
 {
-    SendInput "!{]}"
+    SendInput "^!{l}"
+}
+
+FuncBlockComment()
+{
+    SendInput "+!{a}"
 }

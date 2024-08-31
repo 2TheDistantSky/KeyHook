@@ -43,7 +43,6 @@ SetTriggered()
     triggered := true
 }
 
-
 #HotIf leaderPressed
 
 ; ---------------------------- select ----------------------------
@@ -99,24 +98,23 @@ WheelUp:: RunFunc("WinTransIncrease")
 WheelDown:: RunFunc("WinTransDecrease")
 
 b:: RunFunc("FuncBracketJmp")
-c:: RunFunc("FuncTogBk")
-e:: RunFunc("FuncGoToPreTab")
-g:: RunFunc("FuncGoTo")
-h:: RunFunc("FuncSelectTo")
-i:: RunFunc("FuncSelectPair")
+c:: RunFunc("FuncCopy")
+g:: RunFunc("FuncTogBk")
 n:: RunFunc("FuncGoToNextTab")
 o:: RunFunc("FuncDelete")
-p:: RunFunc("FuncChgPair")
+p:: RunFunc("FuncGoToPreTab")
 q:: RunFunc("FuncGoBack")
 t:: RunFunc("FuncGoForward")
 u:: RunFunc("FuncBackspace")
-x:: RunFunc("FuncDelTo")
+v:: RunFunc("FuncPaste")
+x:: RunFunc("FuncCut")
 y:: RunFunc("FuncRedo")
 z:: RunFunc("FuncUndo")
 
 ,:: RunFunc("FuncGoToDefinition")
 [:: RunFunc("FuncPreBk")
 ]:: RunFunc("FuncNextBk")
+/:: RunFunc("FuncBlockComment")
 
 F5:: RunFunc("FuncReload")
 F6:: RunFunc("ToggleWinPin")
