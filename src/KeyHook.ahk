@@ -130,3 +130,25 @@ F6:: RunFunc("ToggleWinPin")
 #include customized_cfg.ahk
 
 #HotIf
+
+WheelUp::
+{
+    MouseGetPos(, &y)
+    ScreenHeight := A_ScreenHeight
+    if (y > ScreenHeight - 50) {
+        RunFunc("FuncPreDesktop")
+    } else {
+        SendInput("{WheelUp}")
+    }
+}
+
+WheelDown::
+{
+    MouseGetPos(, &y)
+    ScreenHeight := A_ScreenHeight
+    if (y > ScreenHeight - 50) {
+        RunFunc("FuncNextDesktop")
+    } else {
+        SendInput("{WheelDown}")
+    }
+}

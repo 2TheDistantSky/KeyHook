@@ -229,3 +229,13 @@ FuncBlockComment()
 {
     SendInput "+!{a}"
 }
+
+FuncPreDesktop()
+{
+    SendInput "^#{Left}"
+}
+
+FuncNextDesktop()
+{
+    SendInput "^#{Right}"
+}
