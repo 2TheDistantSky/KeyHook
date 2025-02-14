@@ -1,6 +1,9 @@
 #Requires AutoHotkey >= 2.0
 #SingleInstance Force
 
+A_HotkeyInterval := 2000
+A_MaxHotkeysPerInterval := 200
+
 if not A_IsAdmin
 {
     Run '*RunAs ' A_AhkPath " " A_ScriptFullPath
@@ -133,6 +136,7 @@ F6:: RunFunc("ToggleWinPin")
 
 WheelUp::
 {
+    CoordMode("Mouse", "Screen")
     MouseGetPos(, &y)
     ScreenHeight := A_ScreenHeight
     if (y > ScreenHeight - 50) {
@@ -144,6 +148,7 @@ WheelUp::
 
 WheelDown::
 {
+    CoordMode("Mouse", "Screen")
     MouseGetPos(, &y)
     ScreenHeight := A_ScreenHeight
     if (y > ScreenHeight - 50) {
